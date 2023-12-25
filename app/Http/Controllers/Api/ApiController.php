@@ -11,6 +11,7 @@ use App\Models\Header;
 use App\Models\About;
 use App\Models\Tips;
 use App\Models\Certification;
+use App\Models\HomeModel;
 
 class ApiController extends Controller
 {
@@ -72,6 +73,61 @@ class ApiController extends Controller
 
             return json_encode( $return_data );
         }
+    }
+    public function getHomeData()
+    {
+        $responce = [
+            'message' => 'Record not found',
+            'error' => 404
+        ];
+        $home_data = HomeModel::where('is_deleted', 0)->where('id', 1)->first();
+        if (isset($home_data)) {
+            $sec3AddMore = json_decode($home_data->sec3AddMore);
+            $sec5AddMore = json_decode($home_data->sec5AddMore);
+            $sec10AddMore = json_decode($home_data->sec10AddMore);
+            $responce = array(
+                //Section One
+                'sec1Title' => $home_data->sec1Title,
+                'sec1SubTitle' => $home_data->sec1SubTitle,
+                'sec1Desc' => $home_data->sec1Desc,
+                'sec1LInk' => $home_data->sec1LInk,
+                'sec1Image' => $home_data->sec1Image,
+                //Section One
+                'sec2Title' => $home_data->sec2Title,
+                'sec2Desc' => $home_data->sec2Desc,
+                'sec2Link' => $home_data->sec2Link,
+                'sec2Image' => $home_data->sec2Image,
+                //Section Three
+                'sec3Title' => $home_data->sec3Title,
+                'sec3Link' => $home_data->sec3Link,
+                'sec3AddMore' => $sec3AddMore,
+                //Section Four
+                'sec4Title' => $home_data->sec4Title,
+                'sec4Desc' => $home_data->sec4Desc,
+                'sec4Link' => $home_data->sec4Link,
+                'sec4Image' => $home_data->sec4Image,
+                //Section Five
+                'sec5Image' => $home_data->sec5Image,
+                'sec5Title' => $home_data->sec5Title,
+                'sec5AddMore' => $sec5AddMore,
+                //Section Six
+                'sec6Title' => $home_data->sec6Title,
+                'sec6image' => $home_data->sec6image,
+                'sec6Link' => $home_data->sec6Link,
+                //Section Seven
+                'sec7Title' => $home_data->sec7Title,
+                'sec7link' => $home_data->sec7link,
+                'sec7Images' => $home_data->sec7Images,
+                //Section Seven
+                'sec8Title' => $home_data->sec8Title,
+                'sec8Desc' => $home_data->sec8Desc,
+                'sec8LInk' => $home_data->sec8LInk,
+                'sec8Image' => $home_data->sec8Image,
+                //Section Ten
+                'sec10AddMore' => $sec10AddMore,
+            );
+        }
+        return json_encode($responce);
     }
 
     public function about()
