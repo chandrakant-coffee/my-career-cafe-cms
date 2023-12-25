@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\{
     DashboardController,UsersController,RolePermissionController,PermissionListingController,FooterController,HeaderController, AboutController,TipsController
 
@@ -45,5 +46,6 @@ Route::middleware(['auth','permission'])->group(function () {
     Route::resource('header', HeaderController::class);
     Route::resource('about', AboutController::class);
     Route::resource('tips', TipsController::class);
+    Route::resource('home', HomeController::class);
 
 });
