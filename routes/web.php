@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AssesmentController;
 use App\Http\Controllers\{
     DashboardController,UsersController,RolePermissionController,PermissionListingController,FooterController,HeaderController, AboutController,TipsController, CertificationController
 
@@ -48,5 +49,6 @@ Route::middleware(['auth','permission'])->group(function () {
     Route::resource('certification', CertificationController::class);
     Route::resource('tips', TipsController::class);
     Route::resource('home', HomeController::class);
+    Route::resource('assesment', AssesmentController::class);
 
 });
