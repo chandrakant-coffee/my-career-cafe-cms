@@ -1,0 +1,1 @@
+CREATE TABLE `export-notification` (`id` INT NOT NULL AUTO_INCREMENT , `user_id` INT NOT NULL , `export_link` VARCHAR(100) NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
