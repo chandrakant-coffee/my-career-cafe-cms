@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
-    DashboardController,UsersController,RolePermissionController,PermissionListingController,FooterController,HeaderController, AboutController,TipsController
+    DashboardController,UsersController,RolePermissionController,PermissionListingController,FooterController,HeaderController, AboutController,TipsController, CertificationController
 
 };
 
@@ -44,6 +44,7 @@ Route::middleware(['auth','permission'])->group(function () {
     Route::resource('footer', FooterController::class);
     Route::resource('header', HeaderController::class);
     Route::resource('about', AboutController::class);
+    Route::resource('certification', CertificationController::class);
     Route::resource('tips', TipsController::class);
 
 });

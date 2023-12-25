@@ -10,6 +10,7 @@ use App\Models\Footer;
 use App\Models\Header;
 use App\Models\About;
 use App\Models\Tips;
+use App\Models\Certification;
 
 class ApiController extends Controller
 {
@@ -116,6 +117,26 @@ class ApiController extends Controller
         }
     }
 
+    public function certification()
+    {
+        $certification_data = Certification::where('is_deleted',0)->where('id',1)->first();
+        if (isset($certification_data)) {
+
+            $banner_section_data = json_decode( $certification_data->banner_section );
+            $content_section_data = json_decode( $certification_data->content_section );
+            $immersive_learning_section_data = json_decode( $certification_data->immersive_learning_section );
+
+
+
+            $return_data = array(
+                'banner_section' => $banner_section_data,
+                'content_section' => $content_section_data,
+                'immersive_learning_section' => $immersive_learning_section_data
+            );
+
+            return json_encode( $return_data );
+        }
+    }
 
 
 }

@@ -139,10 +139,17 @@
                         <span class="menu-icon">
                             <i class="bi bi-person fs-2"></i>
                         </span>
-                        <span class="menu-title">About Us</span>
+                        <span class="menu-title">About Us Page</span>
                     </a>
                 </div>
-
+                <div class="menu-item ">
+                    <a class="menu-link  @if ($route[0] == 'certification') active @endif" href="{{ route('certification.index') }}">
+                        <span class="menu-icon">
+                            <i class="bi bi-person fs-2"></i>
+                        </span>
+                        <span class="menu-title">Certification Page</span>
+                    </a>
+                </div>
                 <div class="menu-item ">
                     <a class="menu-link  @if ($route[0] == 'tips') active @endif" href="{{ route('tips.index') }}">
                         <span class="menu-icon">

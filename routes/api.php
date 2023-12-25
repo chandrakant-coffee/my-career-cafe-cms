@@ -4,7 +4,6 @@ use App\Http\Controllers\API\ApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,3 +23,4 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 Route::get('header', [ApiController::class, 'header']);
 Route::get('footer', [ApiController::class, 'footer']);
 Route::get('about', [ApiController::class, 'about']);
+Route::get('certification', [ApiController::class, 'certification']);
