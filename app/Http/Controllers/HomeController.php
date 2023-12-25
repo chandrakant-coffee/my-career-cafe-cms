@@ -27,24 +27,24 @@ class HomeController extends Controller
     public function update(Request $request, $id)
     {
         $home = HomeModel::find($id);
-        if (!empty($request->sec1Image) && $home->sec1Image) {
-            unlink($home->sec1Image);
-        }
-        if (!empty($request->sec2Image) && $home->sec2Image) {
-            unlink($home->sec2Image);
-        }
-        if (!empty($request->sec4Image) && $home->sec4Image) {
-            unlink($home->sec4Image);
-        }
-        if (!empty($request->sec5Image) && $home->sec5Image) {
-            unlink($home->sec5Image);
-        }
-        if (!empty($request->sec6image) && $home->sec6image) {
-            unlink($home->sec6image);
-        }
-        if (!empty($request->sec8Image) && $home->sec8Image) {
-            unlink($home->sec8Image);
-        }
+        // if (!empty($request->sec1Image) && $home->sec1Image) {
+        //     unlink($home->sec1Image);
+        // }
+        // if (!empty($request->sec2Image) && $home->sec2Image) {
+        //     unlink($home->sec2Image);
+        // }
+        // if (!empty($request->sec4Image) && $home->sec4Image) {
+        //     unlink($home->sec4Image);
+        // }
+        // if (!empty($request->sec5Image) && $home->sec5Image) {
+        //     unlink($home->sec5Image);
+        // }
+        // if (!empty($request->sec6image) && $home->sec6image) {
+        //     unlink($home->sec6image);
+        // }
+        // if (!empty($request->sec8Image) && $home->sec8Image) {
+        //     unlink($home->sec8Image);
+        // }
         if (isset($request->sec1Image)) {
             //For section one
             $sec1Image = time() . '1.' . $request->sec1Image->getClientOriginalName();
