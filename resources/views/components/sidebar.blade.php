@@ -133,7 +133,14 @@
                         <span class="menu-section text-muted text-uppercase fs-8 ls-1"> CMS Modules</span>
                     </div>
                 </div>
-
+                <div class="menu-item ">
+                    <a class="menu-link  @if ($route[0] == 'home') active @endif" href="{{ route('home.edit',1) }}">
+                        <span class="menu-icon">
+                            <i class="bi bi-person fs-2"></i>
+                        </span>
+                        <span class="menu-title">Home</span>
+                    </a>
+                </div>
                 <div class="menu-item ">
                     <a class="menu-link  @if ($route[0] == 'about') active @endif" href="{{ route('about.index') }}">
                         <span class="menu-icon">
