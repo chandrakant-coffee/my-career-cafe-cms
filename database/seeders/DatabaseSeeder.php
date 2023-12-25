@@ -17,11 +17,11 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         \App\Models\User::factory()->create([
-            'name' => 'Aquil',
-            'email' => 'sachin@aquilmedia.in',
+            'name' => 'Coffee Digital',
+            'email' => 'chandrakant@coffeedigital.in',
             'password' => Hash::make(123456789),
         ]);
     }
 
-    
+
 }
