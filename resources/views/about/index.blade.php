@@ -425,11 +425,8 @@
                                         </table>
                                     </div>
                                     <br/>
-
                                 </div>
-
                                 <hr/>
-
                                 <div class="card-body">
                                     <h5 class="card-title">Insights and Tips Section *</h5><br/>
                                     @php
@@ -443,7 +440,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="mb-5">
                                         <div class="form-group row">
                                             <label class="col-2 col-form-label">Insights and Tips *</label>
@@ -462,8 +458,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <div class="mb-5">
                                         <div class="form-group row">
                                             <label class="col-2 col-form-label">Button Text *</label>

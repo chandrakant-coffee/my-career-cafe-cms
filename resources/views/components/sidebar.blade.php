@@ -154,6 +154,14 @@
                         <span class="menu-title">Assesment Page</span>
                     </a>
                 </div>
+                <div class="menu-item ">
+                    <a class="menu-link  @if ($route[0] == 'tips') active @endif" href="{{ route('jobseekers.index') }}">
+                        <span class="menu-icon">
+                            <i class="bi bi-person fs-2"></i>
+                        </span>
+                        <span class="menu-title">Job Seekers</span>
+                    </a>
+                </div>
 
                 <!--end::Menu-->
             </div>
