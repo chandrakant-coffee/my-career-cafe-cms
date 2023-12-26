@@ -95,13 +95,13 @@
                                     <div class="form-group row mb-5">
                                         <label class="col-2 col-form-label">Sub Heading *</label>
                                         <div class="col-10">
-                                            <textarea class="form-control" name="content_section_sub_heading" placeholder="Enter Sub Heading" required="">{{ $decode_data->sub_heading }}</textarea>
+                                            <textarea class="form-control CkeditorClass" id="editor" name="content_section_sub_heading" placeholder="Enter Sub Heading" required="">{{ $decode_data->sub_heading }}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-5">
                                         <label class="col-2 col-form-label">Content *</label>
                                         <div class="col-10">
-                                            <textarea class="form-control CkeditorClass" name="content_section_content" placeholder="Enter Content" required="">{{ $decode_data->content }}</textarea>
+                                            <textarea class="form-control CkeditorClass" id="editor1" name="content_section_content" placeholder="Enter Content" required="">{{ $decode_data->content }}</textarea>
                                         </div>
                                     </div>
 
@@ -145,7 +145,7 @@
                                         <div class="form-group row">
                                             <label class="col-2 col-form-label">Bottom Content *</label>
                                             <div class="col-10">
-                                               <textarea class="form-control CkeditorClass" name="content_section_bottom_content" placeholder="Enter Content" required="">{{ $decode_data->bottom_content }}</textarea>
+                                               <textarea class="form-control CkeditorClass" id="editor2" name="content_section_bottom_content" placeholder="Enter Content" required="">{{ $decode_data->bottom_content }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -190,7 +190,7 @@
                                     <div class="mb-3">
                                         <div class="mb-4">
                                             <div class="form-group row">
-                                                <label class="col-2 col-form-label">Image </label>
+                                                <label class="col-2 col-form-label"> Current Image </label>
                                                 <div class="col-10">
                                                     <img class="IndexImg" src="{{url('/')}}/{{ $decode_data->image->path }}" alt="Banner Image" srcset="" />
                                                 </div>
@@ -226,7 +226,7 @@
                                         <div class="form-group row">
                                             <label class="col-2 col-form-label">Bottom Content *</label>
                                             <div class="col-10">
-                                               <textarea class="form-control CkeditorClass" name="immersive_learning_section_bottom_content" placeholder="Enter Content" required="">{{ $decode_data->bottom_content }}</textarea>
+                                               <textarea class="form-control CkeditorClass" id="editor3" name="immersive_learning_section_bottom_content" placeholder="Enter Content" required="">{{ $decode_data->bottom_content }}</textarea>
                                             </div>
                                         </div>
                                     </div>

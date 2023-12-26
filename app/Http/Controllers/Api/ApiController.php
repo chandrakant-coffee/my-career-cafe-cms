@@ -26,12 +26,13 @@ class ApiController extends Controller
             $header_menus_data = json_decode( $header_data->menus );
 
             $return_data = array(
+                'status' => true,
                 'logo' => array(
                     'path' => $header_logo_data->image,
                     'alt' => $header_logo_data->alt,
                     'link' => $header_logo_data->link
                 ),
-                'social_menus' => $header_menus_data
+                'menus' => $header_menus_data
             );
 
             return json_encode( $return_data );
@@ -52,6 +53,7 @@ class ApiController extends Controller
             $footer_copyright_data = $footer_data->copyright;
 
             $return_data = array(
+                'status' => true,
                 'column_first' => array(
                     'logo' => array(
                         'path' => $footer_logo_data->image,
@@ -161,6 +163,7 @@ class ApiController extends Controller
             );
 
             $return_data = array(
+                'status' => true,
                 'banner_section' => $banner_data,
                 'career_development_section' => $career_development_data,
                 'charge_process_section' => $charge_process_data,
@@ -185,6 +188,7 @@ class ApiController extends Controller
 
 
             $return_data = array(
+                'status' => true,
                 'banner_section' => $banner_section_data,
                 'content_section' => $content_section_data,
                 'immersive_learning_section' => $immersive_learning_section_data
