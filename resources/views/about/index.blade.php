@@ -134,7 +134,7 @@
                                                     @endphp
                                                     <tr>
                                                         <td>
-                                                            <img style="width: 30px;"class="IndexImg" src="{{url('/')}}/{{ $value->image }}" alt="image" />
+                                                            <img style="width: 200px;"class="IndexImg" src="{{url('/')}}/{{ $value->image }}" alt="image" />
                                                         </td>
                                                         <td>
                                                             <input type="file" @if (!isset($value->image)) data-bvalidator="required" @endif data-bvalidator="extension[jpg:png:jpeg]" data-bvalidator-msg="Please select file of type .jpg, .png or .jpeg" class="form-control" name="second_section_image[]" />
@@ -264,7 +264,7 @@
                                     <div class="form-group row mb-5">
                                         <label class="col-2 col-form-label">Description *</label>
                                         <div class="col-10">
-                                            <textarea class="form-control CkeditorClass" id="editor" name="career_development_program_section_description" placeholder="Enter Description" required="">{{ $decode_logo->description }}</textarea>
+                                            <textarea class="form-control CkeditorClass" id="editor2" name="career_development_program_section_description" placeholder="Enter Description" required="">{{ $decode_logo->description }}</textarea>
                                         </div>
                                     </div>
                                     <div class="mb-5">
