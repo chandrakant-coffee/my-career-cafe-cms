@@ -147,7 +147,7 @@
                     </a>
                 </div>
                 <div class="menu-item ">
-                    <a class="menu-link  @if ($route[0] == 'tips') active @endif" href="{{ route('assesment.index') }}">
+                    <a class="menu-link  @if ($route[0] == 'assesment') active @endif" href="{{ route('assesment.index') }}">
                         <span class="menu-icon">
                             <i class="bi bi-person fs-2"></i>
                         </span>
@@ -155,11 +155,19 @@
                     </a>
                 </div>
                 <div class="menu-item ">
-                    <a class="menu-link  @if ($route[0] == 'tips') active @endif" href="{{ route('jobseekers.index') }}">
+                    <a class="menu-link  @if ($route[0] == 'jobseekers') active @endif" href="{{ route('jobseekers.index') }}">
                         <span class="menu-icon">
                             <i class="bi bi-person fs-2"></i>
                         </span>
                         <span class="menu-title">Job Seekers</span>
+                    </a>
+                </div>
+                <div class="menu-item ">
+                    <a class="menu-link  @if ($route[0] == 'jobs') active @endif" href="{{ route('jobs.index') }}">
+                        <span class="menu-icon">
+                            <i class="bi bi-person fs-2"></i>
+                        </span>
+                        <span class="menu-title">Jobs Page</span>
                     </a>
                 </div>
 

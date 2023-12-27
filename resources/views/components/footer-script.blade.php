@@ -25,9 +25,6 @@
 		<script src="{{asset('/public/admin/bvalidator/dist/themes/presenters/default.min.js')}}"></script>
 		<script src="{{asset('/public/admin/bvalidator/dist/themes/gray/gray.js')}}"></script>
 		<!--end::Page Custom Javascript-->
-		<script src="{{ url('/') }}/public/select2/dist/js/select2.min.js"></script>
-		<script src="{{ url('/') }}/public/select2/dist/js/select2.full.js"></script>
-
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$('#FormId').bValidator();

@@ -70,8 +70,8 @@ class AssesmentController extends Controller
             $request->sec3_image->move(public_path('uploads/assesment'), $sec3_image);
             $sec3_img = 'public/uploads/assesment/' . $sec3_image;
         } else {
-            $banner_section = json_decode($data->banner_section);
-            $sec3_img = $banner_section->image;
+            $section_three = json_decode($data->section_three);
+            $sec3_img = $section_three->sec3_image;
         }
         $section_three_array = array(
             'sec3_title' => $request->sec3_title,
@@ -127,6 +127,15 @@ class AssesmentController extends Controller
             ),
             'pointers' => $section_five_pointers_array,
         );
+        // seo start 
+        $data->page_title = $request->page_title;
+        $data->meta_title = $request->meta_title;
+        $data->meta_desc = $request->meta_desc;
+        $data->meta_keyword = $request->meta_keyword;
+        $data->url_schema = $request->url_schema;
+        $data->canonical_tag = $request->canonical_tag;
+        $data->canonical_rel = $request->canonical_rel;
+        // End
         $data->benefits_section = json_encode($section_five_array);
         $data->section_four = json_encode($section_four_array);
         $data->section_three = json_encode($section_three_array);

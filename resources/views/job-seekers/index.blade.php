@@ -6,7 +6,7 @@
                     <div data-kt-swapper="true" data-kt-swapper-mode="prepend"
                         data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
                         class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
-                        <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Tips Listing</h1>
+                        <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Job Seekers Listing</h1>
                           <span class="h-20px border-gray-200 border-start mx-4"></span>
                     </div>
                 </div>
@@ -17,7 +17,7 @@
                     <div class="card card-custom gutter-b">
                         <div class="card-header flex-wrap py-3">
                             <div class="card-title">
-                                <h3 class="card-label">Tips</h3>
+                                <h3 class="card-label">Job Seekers</h3>
                             </div>
                             <div class="card-toolbar">
                                 <a href="{{ route('jobseekers.create') }}" class="btn btn-sm btn-light-primary"
