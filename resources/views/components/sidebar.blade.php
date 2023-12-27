@@ -111,7 +111,7 @@
 
                 <div class="menu-item">
                     <div class="menu-content pt-8 pb-2">
-                        <span class="menu-section text-muted text-uppercase fs-8 ls-1"> CMS Modules</span>
+                        <span class="menu-section text-muted text-uppercase fs-8 ls-1"> Pages </span>
                     </div>
                 </div>
                 <div class="menu-item ">
@@ -138,14 +138,7 @@
                         <span class="menu-title">Certification Page</span>
                     </a>
                 </div>
-                <div class="menu-item ">
-                    <a class="menu-link  @if ($route[0] == 'tips') active @endif" href="{{ route('tips.index') }}">
-                        <span class="menu-icon">
-                            <i class="bi bi-person fs-2"></i>
-                        </span>
-                        <span class="menu-title">Insights and Tips</span>
-                    </a>
-                </div>
+
                 <div class="menu-item ">
                     <a class="menu-link  @if ($route[0] == 'assesment') active @endif" href="{{ route('assesment.index') }}">
                         <span class="menu-icon">
@@ -153,6 +146,22 @@
                         </span>
                         <span class="menu-title">Assesment Page</span>
                     </a>
+                </div>
+
+                <div class="menu-item ">
+                    <a class="menu-link  @if ($route[0] == 'jobs') active @endif" href="{{ route('jobs.index') }}">
+                        <span class="menu-icon">
+                            <i class="bi bi-person fs-2"></i>
+                        </span>
+                        <span class="menu-title">Jobs Page</span>
+                    </a>
+                </div>
+
+
+                <div class="menu-item">
+                    <div class="menu-content pt-8 pb-2">
+                        <span class="menu-section text-muted text-uppercase fs-8 ls-1"> CMS Modules</span>
+                    </div>
                 </div>
                 <div class="menu-item ">
                     <a class="menu-link  @if ($route[0] == 'jobseekers') active @endif" href="{{ route('jobseekers.index') }}">
@@ -163,14 +172,13 @@
                     </a>
                 </div>
                 <div class="menu-item ">
-                    <a class="menu-link  @if ($route[0] == 'jobs') active @endif" href="{{ route('jobs.index') }}">
+                    <a class="menu-link  @if ($route[0] == 'tips') active @endif" href="{{ route('tips.index') }}">
                         <span class="menu-icon">
                             <i class="bi bi-person fs-2"></i>
                         </span>
-                        <span class="menu-title">Jobs Page</span>
+                        <span class="menu-title">Insights and Tips</span>
                     </a>
                 </div>
-
                 <!--end::Menu-->
             </div>
         </div>
