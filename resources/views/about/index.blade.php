@@ -447,12 +447,10 @@
                                                 @php
                                                     $TipsId = $decode_data->pointers;
                                                 @endphp
-                                                <select class="form-control js-example-placeholder-single" multiple="multiple"
-                                                 name="insights_and_tips_section_tips_id[]" id="product_id" data-bvalidator="required">
+                                                <select class="form-select" data-control="select2" data-placeholder="Select an option" multiple="multiple" name="insights_and_tips_section_tips_id[]" id="product_id" data-bvalidator="required">
                                                     <option>--- Select Insights and Tips name ---</option>
                                                     @foreach ($tipsdata as $value)
-                                                            <option value="{{ $value->id}}"
-                                                            @if ($TipsId !=NULL && in_array($value->id,$TipsId)) selected @endif>{{ $value->category }}</option>
+                                                    <option value="{{ $value->id}}" @if ($TipsId !=NULL && in_array($value->id,$TipsId)) selected @endif>{{ $value->category }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -476,7 +474,67 @@
                                     </div>
 
                                 </div>
-
+                                <hr />
+                                <div class="card-body">
+                                    <span class="fw-bold fs-3">SEO Tags</span>
+                                    <div class="separator border-dark mb-5"></div>
+                                    <div class="mb-5">
+                                        <div class="form-group row">
+                                            <label class="col-2 col-form-label">Page Title</label>
+                                            <div class="col-10">
+                                                <input type="text" data-bvalidator="maxlen[49]" value="{{$data->page_title}}" class="form-control" name="page_title" placeholder="Enter Page Title" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5">
+                                        <div class="form-group row">
+                                            <label class="col-2 col-form-label">Meta Title</label>
+                                            <div class="col-10">
+                                                <input type="text" data-bvalidator="maxlen[49]" value="{{$data->meta_title}}" class="form-control" name="meta_title" placeholder="Enter Meta Title" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5">
+                                        <div class="form-group row">
+                                            <label class="col-2 col-form-label">Meta Keywords</label>
+                                            <div class="col-10">
+                                                <input type="text" data-bvalidator="maxlen[49]" value="{{$data->meta_keyword}}" class="form-control" name="meta_keyword" placeholder="Enter Meta Keywords" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5">
+                                        <div class="form-group row">
+                                            <label class="col-2 col-form-label">Meta Description</label>
+                                            <div class="col-10">
+                                                <textarea name="meta_desc" data-bvalidator="maxlen[99]" class="form-control" id="" cols="30" rows="5">{{$data->meta_desc}}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5">
+                                        <div class="form-group row">
+                                            <label class="col-2 col-form-label">Url Schema</label>
+                                            <div class="col-10">
+                                                <input type="text" data-bvalidator="maxlen[49]" value="{{$data->url_schema}}" class="form-control" name="url_schema" placeholder="Enter Url Schema" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5">
+                                        <div class="form-group row">
+                                            <label class="col-2 col-form-label">Canonical Rel</label>
+                                            <div class="col-10">
+                                                <input type="text" data-bvalidator="maxlen[49]" value="{{$data->canonical_rel}}" class="form-control" name="canonical_rel" placeholder="Enter Canonical Rel" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5">
+                                        <div class="form-group row">
+                                            <label class="col-2 col-form-label">Canonical Tag</label>
+                                            <div class="col-10">
+                                                <input type="text" data-bvalidator="maxlen[49]" value="{{$data->canonical_tag}}" class="form-control" name="canonical_tag" placeholder="Enter Canonical Tag" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="card-footer">
                                     <div class="row">
                                         <div class="col-2"></div><div class="col-10">

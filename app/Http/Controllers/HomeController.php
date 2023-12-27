@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\HomeModel;
+use App\Models\Tips;
 use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
@@ -12,39 +13,25 @@ class HomeController extends Controller
     {
         $id = 1;
         $data = HomeModel::find($id);
+        $tipsdata = Tips::where('is_deleted', 0)->get();
         $roleId = NULL;
-        return view('home.edit', compact('data',));
+        return view('home.edit', compact('data', 'tipsdata'));
     }
     public function edit($id)
     {
         $data = HomeModel::find($id);
+        $tipsdata = Tips::where('is_deleted', 0)->get();
+
         $sec3AddMore =  json_decode($data->sec3AddMore);
         $sec5AddMore =  json_decode($data->sec5AddMore);
         $sec10AddMore =  json_decode($data->sec10AddMore);
         $roleId = NULL;
-        return view('home.edit', compact('data', 'sec3AddMore', 'sec5AddMore', 'sec10AddMore'));
+        return view('home.edit', compact('data', 'sec3AddMore', 'sec5AddMore', 'sec10AddMore', 'tipsdata'));
     }
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+        $id = 1;
         $home = HomeModel::find($id);
-        // if (!empty($request->sec1Image) && $home->sec1Image) {
-        //     unlink($home->sec1Image);
-        // }
-        // if (!empty($request->sec2Image) && $home->sec2Image) {
-        //     unlink($home->sec2Image);
-        // }
-        // if (!empty($request->sec4Image) && $home->sec4Image) {
-        //     unlink($home->sec4Image);
-        // }
-        // if (!empty($request->sec5Image) && $home->sec5Image) {
-        //     unlink($home->sec5Image);
-        // }
-        // if (!empty($request->sec6image) && $home->sec6image) {
-        //     unlink($home->sec6image);
-        // }
-        // if (!empty($request->sec8Image) && $home->sec8Image) {
-        //     unlink($home->sec8Image);
-        // }
         if (isset($request->sec1Image)) {
             //For section one
             $sec1Image = time() . '1.' . $request->sec1Image->getClientOriginalName();
@@ -94,6 +81,7 @@ class HomeController extends Controller
                 }
                 $sectionThreeArray[] = array(
                     "sec3Images" => $imgdata,
+                    "sec3ImagesAlt" => $request->sec3ImagesAlt[$key],
                     "sec3Titles" => $request->sec3Titles[$key],
                     "sec3Descriptions" => $request->sec3Descriptions[$key],
                     "sec3OrderBy" => $request->sec3OrderBy[$key]
@@ -113,6 +101,7 @@ class HomeController extends Controller
                 }
                 $sectionFiveArray[] = array(
                     "sec5Images" => $imgdata,
+                    "sec5ImagesAlt" => $request->sec5ImagesAlt[$key],
                     "sec5Titles" => $request->sec5Titles[$key],
                     "sec5Descriptions" => $request->sec5Descriptions[$key],
                     "sec5OrderBy" => $request->sec5OrderBy[$key]
@@ -130,6 +119,28 @@ class HomeController extends Controller
                 );
             }
         }
+        //Section six 
+        $section_six_pointers_array = array();
+        foreach ($request->insights_and_tips_section_tips_id as $key => $value) {
+            $section_six_pointers_array[] = $value;
+        }
+        $section_six_array = array(
+            'heading' => $request->insights_and_tips_section_heading,
+            'button' => array(
+                'text' => $request->insights_and_tips_section_button_text,
+                'link' => $request->insights_and_tips_section_button_link,
+            ),
+            'pointers' => $section_six_pointers_array
+        );
+        //Image alt
+        $home->sec1ImgAlt = $request->sec1ImgAlt;
+        $home->sec2ImageAlt = $request->sec2ImageAlt;
+        $home->sec4ImageAlt = $request->sec4ImageAlt;
+        $home->sec5ImageAlt = $request->sec5ImageAlt;
+        $home->sec6imageAlt = $request->sec6imageAlt;
+        $home->sec8ImgAlt = $request->sec8ImgAlt;
+        // End 
+        $home->insights_and_tips_section = json_encode($section_six_array);
         $home->sec10AddMore = json_encode($sectionTenArray);
         $home->sec3AddMore = json_encode($sectionThreeArray);
         $home->sec5AddMore = json_encode($sectionFiveArray);
@@ -137,22 +148,26 @@ class HomeController extends Controller
         $home->sec1SubTitle = $request->sec1SubTitle;
         $home->sec1Desc = $request->sec1Desc;
         $home->sec1LInk = $request->sec1LInk;
+        $home->sec1LinkTxt = $request->sec1LinkTxt;
         $home->sec2Title = $request->sec2Title;
         $home->sec2Desc = $request->sec2Desc;
         $home->sec2Link = $request->sec2Link;
+        $home->sec2LinkTxt = $request->sec2LinkTxt;
         $home->sec3Title = $request->sec3Title;
+        $home->sec3Link = $request->sec3Link;
+        $home->sec3LinkTxt = $request->sec3LinkTxt;
         $home->sec4Title = $request->sec4Title;
         $home->sec4Desc = $request->sec4Desc;
         $home->sec4Link = $request->sec4Link;
+        $home->sec4LinkTxt = $request->sec4LinkTxt;
         $home->sec5Title = $request->sec5Title;
         $home->sec6Title = $request->sec6Title;
         $home->sec6Link = $request->sec6Link;
-        $home->sec7Title = $request->sec7Title;
-        $home->sec7link = $request->sec7link;
+        $home->sec6LinkText = $request->sec6LinkText;
         $home->sec8Title = $request->sec8Title;
         $home->sec8Desc = $request->sec8Desc;
         $home->sec8LInk = $request->sec8LInk;
-        $home->sec9Title = $request->sec9Title;
+        $home->sec8LInkTxt = $request->sec8LInkTxt;
         // seo start 
         $home->page_title = $request->page_title;
         $home->meta_title = $request->meta_title;

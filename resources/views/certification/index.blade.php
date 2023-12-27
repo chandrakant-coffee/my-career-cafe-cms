@@ -1,6 +1,6 @@
 <x-app-layout>
 
-@section('content')
+    @section('content')
 
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <div class="toolbar" id="kt_toolbar">
@@ -18,12 +18,12 @@
 
                         <div class="card card-custom example example-compact">
 
-                               <form action="{{ route('certification.update',$id) }}" method="POST" class="form" id="FormId" enctype="multipart/form-data">
+                            <form action="{{ route('certification.update',$id) }}" method="POST" class="form" id="FormId" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
 
                                 <div class="card-body">
-                                    <h5 class="card-title">Banner Section</h5><br/>
+                                    <h5 class="card-title">Banner Section</h5><br />
                                     @php
                                     $decode_logo = json_decode($data->banner_section);
                                     @endphp
@@ -75,11 +75,11 @@
 
                                 </div>
 
-                                <hr/>
+                                <hr />
 
 
                                 <div class="card-body">
-                                    <h5 class="card-title">Content Section</h5><br/>
+                                    <h5 class="card-title">Content Section</h5><br />
                                     @php
                                     $decode_data = json_decode($data->content_section);
                                     @endphp
@@ -145,7 +145,7 @@
                                         <div class="form-group row">
                                             <label class="col-2 col-form-label">Bottom Content *</label>
                                             <div class="col-10">
-                                               <textarea class="form-control CkeditorClass" id="editor2" name="content_section_bottom_content" placeholder="Enter Content" required="">{{ $decode_data->bottom_content }}</textarea>
+                                                <textarea class="form-control CkeditorClass" id="editor2" name="content_section_bottom_content" placeholder="Enter Content" required="">{{ $decode_data->bottom_content }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -169,10 +169,10 @@
 
                                 </div>
 
-                                <hr/>
+                                <hr />
 
                                 <div class="card-body">
-                                    <h5 class="card-title">Immersive Learning Section</h5><br/>
+                                    <h5 class="card-title">Immersive Learning Section</h5><br />
                                     @php
                                     $decode_data = json_decode($data->immersive_learning_section);
                                     @endphp
@@ -226,28 +226,88 @@
                                         <div class="form-group row">
                                             <label class="col-2 col-form-label">Bottom Content *</label>
                                             <div class="col-10">
-                                               <textarea class="form-control CkeditorClass" id="editor3" name="immersive_learning_section_bottom_content" placeholder="Enter Content" required="">{{ $decode_data->bottom_content }}</textarea>
+                                                <textarea class="form-control CkeditorClass" id="editor3" name="immersive_learning_section_bottom_content" placeholder="Enter Content" required="">{{ $decode_data->bottom_content }}</textarea>
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
-
-                                <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col-2"></div><div class="col-10">
-                                            <button type="submit" class="btn btn-success mr-2" name="submitButton">Submit</button>
-                                            <a href="{{ route('footer.index') }}" class="btn btn-light-danger">Cancel</a>
+                                <hr />
+                                <div class="card-body">
+                                    <span class="fw-bold fs-3">SEO Tags</span>
+                                    <div class="separator border-dark mb-5"></div>
+                                    <div class="mb-5">
+                                        <div class="form-group row">
+                                            <label class="col-2 col-form-label">Page Title</label>
+                                            <div class="col-10">
+                                                <input type="text" data-bvalidator="maxlen[49]" value="{{$data->page_title}}" class="form-control" name="page_title" placeholder="Enter Page Title" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5">
+                                        <div class="form-group row">
+                                            <label class="col-2 col-form-label">Meta Title</label>
+                                            <div class="col-10">
+                                                <input type="text" data-bvalidator="maxlen[49]" value="{{$data->meta_title}}" class="form-control" name="meta_title" placeholder="Enter Meta Title" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5">
+                                        <div class="form-group row">
+                                            <label class="col-2 col-form-label">Meta Keywords</label>
+                                            <div class="col-10">
+                                                <input type="text" data-bvalidator="maxlen[49]" value="{{$data->meta_keyword}}" class="form-control" name="meta_keyword" placeholder="Enter Meta Keywords" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5">
+                                        <div class="form-group row">
+                                            <label class="col-2 col-form-label">Meta Description</label>
+                                            <div class="col-10">
+                                                <textarea name="meta_desc" data-bvalidator="maxlen[99]" class="form-control" id="" cols="30" rows="5">{{$data->meta_desc}}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5">
+                                        <div class="form-group row">
+                                            <label class="col-2 col-form-label">Url Schema</label>
+                                            <div class="col-10">
+                                                <input type="text" data-bvalidator="maxlen[49]" value="{{$data->url_schema}}" class="form-control" name="url_schema" placeholder="Enter Url Schema" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5">
+                                        <div class="form-group row">
+                                            <label class="col-2 col-form-label">Canonical Rel</label>
+                                            <div class="col-10">
+                                                <input type="text" data-bvalidator="maxlen[49]" value="{{$data->canonical_rel}}" class="form-control" name="canonical_rel" placeholder="Enter Canonical Rel" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5">
+                                        <div class="form-group row">
+                                            <label class="col-2 col-form-label">Canonical Tag</label>
+                                            <div class="col-10">
+                                                <input type="text" data-bvalidator="maxlen[49]" value="{{$data->canonical_tag}}" class="form-control" name="canonical_tag" placeholder="Enter Canonical Tag" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
                         </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-2"></div>
+                                <div class="col-10">
+                                    <button type="submit" class="btn btn-success mr-2" name="submitButton">Submit</button>
+                                    <a href="{{ route('footer.index') }}" class="btn btn-light-danger">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <script>
         $(".js-example-placeholder-single").select2({
@@ -255,6 +315,5 @@
             multiple: true
         });
     </script>
-@endsection
+    @endsection
 </x-app-layout>
-

@@ -127,6 +127,20 @@ class AssesmentController extends Controller
             ),
             'pointers' => $section_five_pointers_array,
         );
+        // insights and tips section 
+        $section_six_pointers_array = array();
+        foreach ($request->insights_and_tips_section_tips_id as $key => $value) {
+            $section_six_pointers_array[] = $value;
+        }
+        $section_six_array = array(
+            'heading' => $request->insights_and_tips_section_heading,
+            'button' => array(
+                'text' => $request->insights_and_tips_section_button_text,
+                'link' => $request->insights_and_tips_section_button_link,
+            ),
+            'pointers' => $section_six_pointers_array
+        );
+        $data->insights_and_tips_section = json_encode($section_six_array);
         // seo start 
         $data->page_title = $request->page_title;
         $data->meta_title = $request->meta_title;

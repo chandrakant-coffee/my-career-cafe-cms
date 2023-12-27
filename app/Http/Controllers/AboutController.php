@@ -11,22 +11,21 @@ class AboutController extends Controller
     public function index()
     {
         $id = 1;
-        $data = About::where('is_deleted',0)->where('id',1)->first();
-        $tipsdata = Tips::where('is_deleted',0)->get();
-        return view('about.index',compact('data', 'tipsdata','id'));
-
+        $data = About::where('is_deleted', 0)->where('id', 1)->first();
+        $tipsdata = Tips::where('is_deleted', 0)->get();
+        return view('about.index', compact('data', 'tipsdata', 'id'));
     }
 
     public function update(Request $request)
     {
 
-       // dd($request);
+        // dd($request);
         $data =  About::find(1);
 
         if (isset($request->banner_background_image)) {
-            $background_image_name = time().'2.'.$request->banner_background_image->getClientOriginalExtension();
+            $background_image_name = time() . '2.' . $request->banner_background_image->getClientOriginalExtension();
             $request->banner_background_image->move(public_path('uploads'), $background_image_name);
-            $background_image = 'public/uploads/'.$background_image_name;
+            $background_image = 'public/uploads/' . $background_image_name;
         } else {
             $banner_section = json_decode($data->banner_section);
             $background_image = $banner_section->image;
@@ -39,23 +38,22 @@ class AboutController extends Controller
                 'link' => $request->logo_link,
             )
         );
-        $data->banner_section = json_encode( $section_one_array );
+        $data->banner_section = json_encode($section_one_array);
 
         $section_two_pointers_array = array();
         foreach ($request->second_section_old_image as $key => $value) {
 
-            if( $value == null ){
+            if ($value == null) {
 
-                $second_section_image = time().$key.'.'.$request->second_section_image[$key]->getClientOriginalExtension();
+                $second_section_image = time() . $key . '.' . $request->second_section_image[$key]->getClientOriginalExtension();
                 $request->second_section_image[$key]->move(public_path('uploads'), $second_section_image);
-                $second_section_image_new_name = 'public/uploads/'.$second_section_image;
-
+                $second_section_image_new_name = 'public/uploads/' . $second_section_image;
             } else {
-                if( isset( $request->second_section_image[$key]) ){
+                if (isset($request->second_section_image[$key])) {
 
-                    $social_image_name = time().$key.'.'.$request->second_section_image[$key]->getClientOriginalExtension();
+                    $social_image_name = time() . $key . '.' . $request->second_section_image[$key]->getClientOriginalExtension();
                     $request->second_section_image[$key]->move(public_path('uploads'), $social_image_name);
-                    $second_section_image_new_name = 'public/uploads/'.$social_image_name;
+                    $second_section_image_new_name = 'public/uploads/' . $social_image_name;
                 } else {
                     $second_section_image_new_name = $value;
                 }
@@ -74,7 +72,7 @@ class AboutController extends Controller
             'description' => $request->section_2_description,
             'pointers' => $section_two_pointers_array,
         );
-        $data->career_development_section = json_encode( $section_two_array );
+        $data->career_development_section = json_encode($section_two_array);
 
 
         $section_three_pointers_array = array();
@@ -92,7 +90,7 @@ class AboutController extends Controller
             ),
             'pointers' => $section_three_pointers_array,
         );
-        $data->charge_process_section = json_encode( $section_three_array );
+        $data->charge_process_section = json_encode($section_three_array);
 
 
         $section_four_pointers_array = array();
@@ -113,7 +111,7 @@ class AboutController extends Controller
             ),
             'pointers' => $section_four_pointers_array,
         );
-        $data->career_development_program_section = json_encode( $section_four_array );
+        $data->career_development_program_section = json_encode($section_four_array);
 
 
         $section_five_pointers_array = array();
@@ -122,9 +120,9 @@ class AboutController extends Controller
         }
 
         if (isset($request->benefits_section_image)) {
-            $benefits_section_image_name = time().'_benifits.'.$request->benefits_section_image->getClientOriginalExtension();
+            $benefits_section_image_name = time() . '_benifits.' . $request->benefits_section_image->getClientOriginalExtension();
             $request->benefits_section_image->move(public_path('uploads'), $benefits_section_image_name);
-            $benefits_section_image = 'public/uploads/'.$benefits_section_image_name;
+            $benefits_section_image = 'public/uploads/' . $benefits_section_image_name;
         } else {
             $benefits_section_decode = json_decode($data->benefits_section);
             $benefits_section_image = $benefits_section_decode->image->path;
@@ -142,7 +140,7 @@ class AboutController extends Controller
             ),
             'pointers' => $section_five_pointers_array,
         );
-        $data->benefits_section = json_encode( $section_five_array );
+        $data->benefits_section = json_encode($section_five_array);
 
 
         $section_six_pointers_array = array();
@@ -157,14 +155,21 @@ class AboutController extends Controller
             ),
             'pointers' => $section_six_pointers_array
         );
-        $data->insights_and_tips_section = json_encode( $section_six_array );
+        $data->insights_and_tips_section = json_encode($section_six_array);
 
-
+        // SEO start 
+        $data->page_title = $request->page_title;
+        $data->meta_title = $request->meta_title;
+        $data->meta_desc = $request->meta_desc;
+        $data->meta_keyword = $request->meta_keyword;
+        $data->url_schema = $request->url_schema;
+        $data->canonical_tag = $request->canonical_tag;
+        $data->canonical_rel = $request->canonical_rel;
+        // End
         if ($data->save()) {
-            return redirect()->route('about.index')->with('success','Record updated successfully.');
+            return redirect()->route('about.index')->with('success', 'Record updated successfully.');
         } else {
-            return redirect()->route('about.index')->with('error','Something went to wrong, please try again!.');
+            return redirect()->route('about.index')->with('error', 'Something went to wrong, please try again!.');
         }
-
     }
 }

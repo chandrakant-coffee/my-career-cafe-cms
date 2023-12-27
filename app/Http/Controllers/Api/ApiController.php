@@ -19,11 +19,11 @@ class ApiController extends Controller
 
     public function header()
     {
-        $header_data = Header::where('is_deleted',0)->where('id',1)->first();
+        $header_data = Header::where('is_deleted', 0)->where('id', 1)->first();
         if (isset($header_data)) {
 
-            $header_logo_data = json_decode( $header_data->logo );
-            $header_menus_data = json_decode( $header_data->menus );
+            $header_logo_data = json_decode($header_data->logo);
+            $header_menus_data = json_decode($header_data->menus);
 
             $return_data = array(
                 'status' => true,
@@ -35,19 +35,19 @@ class ApiController extends Controller
                 'menus' => $header_menus_data
             );
 
-            return json_encode( $return_data );
+            return json_encode($return_data);
         }
     }
 
     public function footer()
     {
         $today = Carbon::now()->format('M d, Y , h:i A');
-        $footer_data = Footer::where('is_deleted',0)->where('id',1)->first();
+        $footer_data = Footer::where('is_deleted', 0)->where('id', 1)->first();
         if (isset($footer_data)) {
 
-            $footer_logo_data = json_decode( $footer_data->logo );
-            $footer_menus_data = json_decode( $footer_data->menus );
-            $footer_social_menus_data = json_decode( $footer_data->social_menus );
+            $footer_logo_data = json_decode($footer_data->logo);
+            $footer_menus_data = json_decode($footer_data->menus);
+            $footer_social_menus_data = json_decode($footer_data->social_menus);
             $footer_phone_no_data = $footer_data->phone_no;
             $footer_email_data = $footer_data->email;
             $footer_copyright_data = $footer_data->copyright;
@@ -73,7 +73,7 @@ class ApiController extends Controller
                 )
             );
 
-            return json_encode( $return_data );
+            return json_encode($return_data);
         }
     }
     public function getHomeData()
@@ -87,45 +87,93 @@ class ApiController extends Controller
             $sec3AddMore = json_decode($home_data->sec3AddMore);
             $sec5AddMore = json_decode($home_data->sec5AddMore);
             $sec10AddMore = json_decode($home_data->sec10AddMore);
-            $responce = array(
-                //Section One
+            $insights_and_tips_data = json_decode($home_data->insights_and_tips_section);
+
+            // Section One 
+            $section_one_arr = [
                 'sec1Title' => $home_data->sec1Title,
                 'sec1SubTitle' => $home_data->sec1SubTitle,
                 'sec1Desc' => $home_data->sec1Desc,
                 'sec1LInk' => $home_data->sec1LInk,
+                'sec1LinkTxt' => $home_data->sec1LinkTxt,
                 'sec1Image' => $home_data->sec1Image,
-                //Section One
+                'sec1ImgAlt' => $home_data->sec1ImgAlt,
+            ];
+            // Section Two
+            $section_two_arr = [
                 'sec2Title' => $home_data->sec2Title,
                 'sec2Desc' => $home_data->sec2Desc,
                 'sec2Link' => $home_data->sec2Link,
+                'sec2LinkTxt' => $home_data->sec2LinkTxt,
                 'sec2Image' => $home_data->sec2Image,
-                //Section Three
+                'sec2ImageAlt' => $home_data->sec2ImageAlt,
+            ];
+            // Section Three
+            $section_three_arr = [
                 'sec3Title' => $home_data->sec3Title,
                 'sec3Link' => $home_data->sec3Link,
+                'sec3LinkTxt' => $home_data->sec3LinkTxt,
                 'sec3AddMore' => $sec3AddMore,
-                //Section Four
+            ];
+            // Section Four
+            $section_four_arr = [
                 'sec4Title' => $home_data->sec4Title,
                 'sec4Desc' => $home_data->sec4Desc,
                 'sec4Link' => $home_data->sec4Link,
+                'sec4LinkTxt' => $home_data->sec4LinkTxt,
                 'sec4Image' => $home_data->sec4Image,
-                //Section Five
+                'sec4ImageAlt' => $home_data->sec4ImageAlt,
+            ];
+            // Section Five
+            $section_five_arr = [
                 'sec5Image' => $home_data->sec5Image,
+                'sec5ImageAlt' => $home_data->sec5ImageAlt,
                 'sec5Title' => $home_data->sec5Title,
                 'sec5AddMore' => $sec5AddMore,
-                //Section Six
+            ];
+            // Section Five
+            $section_six_arr = [
                 'sec6Title' => $home_data->sec6Title,
                 'sec6image' => $home_data->sec6image,
+                'sec6imageAlt' => $home_data->sec6imageAlt,
                 'sec6Link' => $home_data->sec6Link,
-                //Section Seven
-                'sec7Title' => $home_data->sec7Title,
-                'sec7link' => $home_data->sec7link,
-                'sec7Images' => $home_data->sec7Images,
-                //Section Seven
+                'sec6LinkText' => $home_data->sec6LinkText,
+            ];
+            //Section seven
+            $insights_and_tips_pointers_array = array();
+            foreach ($insights_and_tips_data->pointers as $key => $value) {
+
+                $tips_data =  Tips::find($value);
+
+                $insights_and_tips_pointers_array[] = array(
+                    'image' => json_decode($tips_data->image),
+                    'category' => $tips_data->category,
+                    'summary' => $tips_data->summary,
+                );
+            }
+            // Section Eight
+            $section_eight_arr = [
                 'sec8Title' => $home_data->sec8Title,
                 'sec8Desc' => $home_data->sec8Desc,
                 'sec8LInk' => $home_data->sec8LInk,
+                'sec8LInkTxt' => $home_data->sec8LInkTxt,
                 'sec8Image' => $home_data->sec8Image,
-                //Section Ten
+                'sec8ImgAlt' => $home_data->sec8ImgAlt,
+            ];
+            $insights_and_tips_new_data = array(
+                'heading' => $insights_and_tips_data->heading,
+                'button' => $insights_and_tips_data->button,
+                'pointers' => $insights_and_tips_pointers_array
+            );
+            $responce = array(
+                'section_one' => $section_one_arr,
+                'section_two' => $section_two_arr,
+                'section_three' => $section_three_arr,
+                'section_four' => $section_four_arr,
+                'section_five' => $section_five_arr,
+                'section_six' => $section_six_arr,
+                'section_seven' => $insights_and_tips_new_data,
+                'section_eight' => $section_eight_arr,
                 'sec10AddMore' => $sec10AddMore,
             );
         }
@@ -134,15 +182,15 @@ class ApiController extends Controller
 
     public function about()
     {
-        $about_data = About::where('is_deleted',0)->where('id',1)->first();
+        $about_data = About::where('is_deleted', 0)->where('id', 1)->first();
         if (isset($about_data)) {
 
-            $banner_data = json_decode( $about_data->banner_section );
-            $career_development_data = json_decode( $about_data->career_development_section );
-            $charge_process_data = json_decode( $about_data->charge_process_section );
-            $career_development_program_data = json_decode( $about_data->career_development_program_section );
-            $benefits_data = json_decode( $about_data->benefits_section );
-            $insights_and_tips_data = json_decode( $about_data->insights_and_tips_section );
+            $banner_data = json_decode($about_data->banner_section);
+            $career_development_data = json_decode($about_data->career_development_section);
+            $charge_process_data = json_decode($about_data->charge_process_section);
+            $career_development_program_data = json_decode($about_data->career_development_program_section);
+            $benefits_data = json_decode($about_data->benefits_section);
+            $insights_and_tips_data = json_decode($about_data->insights_and_tips_section);
 
             $insights_and_tips_pointers_array = array();
             foreach ($insights_and_tips_data->pointers as $key => $value) {
@@ -150,7 +198,7 @@ class ApiController extends Controller
                 $tips_data =  Tips::find($value);
 
                 $insights_and_tips_pointers_array[] = array(
-                    'image' => json_decode( $tips_data->image ),
+                    'image' => json_decode($tips_data->image),
                     'category' => $tips_data->category,
                     'summary' => $tips_data->summary,
                 );
@@ -172,18 +220,18 @@ class ApiController extends Controller
                 'insights_and_tips_section' => $insights_and_tips_new_data,
             );
 
-            return json_encode( $return_data );
+            return json_encode($return_data);
         }
     }
 
     public function certification()
     {
-        $certification_data = Certification::where('is_deleted',0)->where('id',1)->first();
+        $certification_data = Certification::where('is_deleted', 0)->where('id', 1)->first();
         if (isset($certification_data)) {
 
-            $banner_section_data = json_decode( $certification_data->banner_section );
-            $content_section_data = json_decode( $certification_data->content_section );
-            $immersive_learning_section_data = json_decode( $certification_data->immersive_learning_section );
+            $banner_section_data = json_decode($certification_data->banner_section);
+            $content_section_data = json_decode($certification_data->content_section);
+            $immersive_learning_section_data = json_decode($certification_data->immersive_learning_section);
 
 
 
@@ -194,9 +242,7 @@ class ApiController extends Controller
                 'immersive_learning_section' => $immersive_learning_section_data
             );
 
-            return json_encode( $return_data );
+            return json_encode($return_data);
         }
     }
-
-
 }
