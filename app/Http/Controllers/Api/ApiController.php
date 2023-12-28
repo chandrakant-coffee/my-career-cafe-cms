@@ -12,6 +12,8 @@ use App\Models\About;
 use App\Models\Tips;
 use App\Models\Certification;
 use App\Models\HomeModel;
+use App\Models\AssesmentModel;
+use App\Models\JobsModel;
 
 class ApiController extends Controller
 {
@@ -165,7 +167,17 @@ class ApiController extends Controller
                 'button' => $insights_and_tips_data->button,
                 'pointers' => $insights_and_tips_pointers_array
             );
+            $seo_arr = [
+                'page_title' => $home_data->page_title,
+                'meta_title' => $home_data->meta_title,
+                'meta_desc' => $home_data->meta_desc,
+                'meta_keyword' => $home_data->meta_keyword,
+                'url_schema' => $home_data->url_schema,
+                'canonical_tag' => $home_data->canonical_tag,
+                'canonical_rel' => $home_data->canonical_rel,
+            ];
             $responce = array(
+                'status' => true,
                 'section_one' => $section_one_arr,
                 'section_two' => $section_two_arr,
                 'section_three' => $section_three_arr,
@@ -175,6 +187,7 @@ class ApiController extends Controller
                 'section_seven' => $insights_and_tips_new_data,
                 'section_eight' => $section_eight_arr,
                 'sec10AddMore' => $sec10AddMore,
+                'seo_data' => $seo_arr
             );
         }
         return json_encode($responce);
@@ -203,7 +216,15 @@ class ApiController extends Controller
                     'summary' => $tips_data->summary,
                 );
             }
-
+            $seo_arr = [
+                'page_title' => $about_data->page_title,
+                'meta_title' => $about_data->meta_title,
+                'meta_desc' => $about_data->meta_desc,
+                'meta_keyword' => $about_data->meta_keyword,
+                'url_schema' => $about_data->url_schema,
+                'canonical_tag' => $about_data->canonical_tag,
+                'canonical_rel' => $about_data->canonical_rel,
+            ];
             $insights_and_tips_new_data = array(
                 'heading' => $insights_and_tips_data->heading,
                 'button' => $insights_and_tips_data->button,
@@ -218,6 +239,7 @@ class ApiController extends Controller
                 'career_development_program_section' => $career_development_program_data,
                 'benefits_section' => $benefits_data,
                 'insights_and_tips_section' => $insights_and_tips_new_data,
+                'seo_data' => $seo_arr
             );
 
             return json_encode($return_data);
@@ -232,17 +254,100 @@ class ApiController extends Controller
             $banner_section_data = json_decode($certification_data->banner_section);
             $content_section_data = json_decode($certification_data->content_section);
             $immersive_learning_section_data = json_decode($certification_data->immersive_learning_section);
-
-
-
+            $seo_arr = [
+                'page_title' => $certification_data->page_title,
+                'meta_title' => $certification_data->meta_title,
+                'meta_desc' => $certification_data->meta_desc,
+                'meta_keyword' => $certification_data->meta_keyword,
+                'url_schema' => $certification_data->url_schema,
+                'canonical_tag' => $certification_data->canonical_tag,
+                'canonical_rel' => $certification_data->canonical_rel,
+            ];
             $return_data = array(
                 'status' => true,
                 'banner_section' => $banner_section_data,
                 'content_section' => $content_section_data,
-                'immersive_learning_section' => $immersive_learning_section_data
+                'immersive_learning_section' => $immersive_learning_section_data,
+                'seo_data' => $seo_arr
             );
 
             return json_encode($return_data);
         }
+    }
+    public function assesment()
+    {
+        $responce = [
+            'message' => 'Record not found',
+            'error' => 404,
+            'status' => false
+        ];
+        $assesment_data = AssesmentModel::where('is_deleted', 0)->where('id', 1)->first();
+        if (isset($assesment_data)) {
+
+            $banner_section_data = json_decode($assesment_data->banner_section);
+            $skill_assesment = json_decode($assesment_data->skill_assesment);
+            $section_three = json_decode($assesment_data->section_three);
+            $section_four = json_decode($assesment_data->section_four);
+            $benefits_section = json_decode($assesment_data->benefits_section);
+            $insights_and_tips_section = json_decode($assesment_data->insights_and_tips_section);
+
+            $seo_arr = [
+                'page_title' => $assesment_data->page_title,
+                'meta_title' => $assesment_data->meta_title,
+                'meta_desc' => $assesment_data->meta_desc,
+                'meta_keyword' => $assesment_data->meta_keyword,
+                'url_schema' => $assesment_data->url_schema,
+                'canonical_tag' => $assesment_data->canonical_tag,
+                'canonical_rel' => $assesment_data->canonical_rel,
+            ];
+
+            $responce = array(
+                'status' => true,
+                'section_one' => $banner_section_data,
+                'section_two' => $skill_assesment,
+                'section_three' => $section_three,
+                'section_four' => $section_four,
+                'section_five' => $benefits_section,
+                'section_six' => $insights_and_tips_section,
+                'seo_data' => $seo_arr
+            );
+        }
+        return json_encode($responce);
+    }
+    public function jobs()
+    {
+        $responce = [
+            'message' => 'Record not found',
+            'error' => 404,
+            'status' => false
+        ];
+        $certification_data = JobsModel::where('is_deleted', 0)->where('id', 1)->first();
+        if (isset($certification_data)) {
+
+            $banner_section_data = json_decode($certification_data->banner_section);
+            $section_two = json_decode($certification_data->section_two);
+            $section_three = json_decode($certification_data->section_three);
+            $last_section = json_decode($certification_data->last_section);
+
+            $seo_arr = [
+                'page_title' => $certification_data->page_title,
+                'meta_title' => $certification_data->meta_title,
+                'meta_desc' => $certification_data->meta_desc,
+                'meta_keyword' => $certification_data->meta_keyword,
+                'url_schema' => $certification_data->url_schema,
+                'canonical_tag' => $certification_data->canonical_tag,
+                'canonical_rel' => $certification_data->canonical_rel,
+            ];
+
+            $responce = array(
+                'status' => true,
+                'banner_section' => $banner_section_data,
+                'section_two' => $section_two,
+                'section_three' => $section_three,
+                'last_section' => $last_section,
+                'seo_data' => $seo_arr
+            );
+        }
+        return json_encode($responce);
     }
 }

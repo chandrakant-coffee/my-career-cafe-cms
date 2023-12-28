@@ -25,3 +25,5 @@ Route::get('footer', [ApiController::class, 'footer']);
 Route::get('getHomeData', [ApiController::class, 'getHomeData']);
 Route::get('about', [ApiController::class, 'about']);
 Route::get('certification', [ApiController::class, 'certification']);
+Route::get('assesment', [ApiController::class, 'assesment']);
+Route::get('jobs', [ApiController::class, 'jobs']);
