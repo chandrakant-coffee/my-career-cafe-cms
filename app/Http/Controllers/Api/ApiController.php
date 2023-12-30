@@ -290,6 +290,20 @@ class ApiController extends Controller
             $section_four = json_decode($assesment_data->section_four);
             $benefits_section = json_decode($assesment_data->benefits_section);
             $insights_and_tips_section = json_decode($assesment_data->insights_and_tips_section);
+            $insights_and_tips_pointers_array = array();
+            foreach ($insights_and_tips_section->pointers as $key => $value) {
+                $tips_data =  Tips::find($value);
+                $insights_and_tips_pointers_array[] = array(
+                    'image' => json_decode($tips_data->image),
+                    'category' => $tips_data->category,
+                    'summary' => $tips_data->summary,
+                );
+            }
+            $insights_and_tips_new_data = array(
+                'heading' => $insights_and_tips_section->heading,
+                'button' => $insights_and_tips_section->button,
+                'pointers' => $insights_and_tips_pointers_array
+            );
 
             $seo_arr = [
                 'page_title' => $assesment_data->page_title,
@@ -308,7 +322,7 @@ class ApiController extends Controller
                 'section_three' => $section_three,
                 'section_four' => $section_four,
                 'section_five' => $benefits_section,
-                'section_six' => $insights_and_tips_section,
+                'section_six' => $insights_and_tips_new_data,
                 'seo_data' => $seo_arr
             );
         }
