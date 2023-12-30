@@ -22,7 +22,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 
 Route::get('header', [ApiController::class, 'header']);
 Route::get('footer', [ApiController::class, 'footer']);
-Route::get('getHomeData', [ApiController::class, 'getHomeData']);
+Route::get('home', [ApiController::class, 'getHomeData']);
 Route::get('about', [ApiController::class, 'about']);
 Route::get('certification', [ApiController::class, 'certification']);
 Route::get('assesment', [ApiController::class, 'assesment']);
