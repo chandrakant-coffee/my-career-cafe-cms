@@ -53,7 +53,7 @@
                                          <div class="form-group row">
                                              <label class="col-2 col-form-label">Description *</label>
                                              <div class="col-10">
-                                                 <textarea name="sec1Desc" data-bvalidator="required" class="form-control" id="" cols="30" rows="5" placeholder="Enter Description">{{$data->sec1Desc}}</textarea>
+                                                 <textarea name="sec1Desc" data-bvalidator="required" class="form-control CkeditorClass" id="editor" cols="30" rows="5" placeholder="Enter Description">{{$data->sec1Desc}}</textarea>
                                              </div>
                                          </div>
                                      </div>
@@ -113,7 +113,7 @@
                                          <div class="form-group row">
                                              <label class="col-2 col-form-label">Description *</label>
                                              <div class="col-10">
-                                                 <textarea name="sec2Desc" data-bvalidator="required" class="form-control" id="" cols="30" rows="5" placeholder="Enter Description">{{$data->sec2Desc}}</textarea>
+                                                 <textarea name="sec2Desc" data-bvalidator="required" class="form-control CkeditorClass" id="editor1" cols="30" rows="5" placeholder="Enter Description">{{$data->sec2Desc}}</textarea>
                                              </div>
                                          </div>
                                      </div>
@@ -204,14 +204,14 @@
                                              </thead>
                                              <tbody id="tableclone">
                                                  @if(isset($sec3AddMore))
-                                                 @foreach($sec3AddMore as $value)
+                                                 @foreach($sec3AddMore as $key => $value)
                                                  <tr>
                                                      <td>
                                                          <input type="file" name="sec3Images[]" value="{{ $value->sec3Images }}" class="form-control" data-bvalidator="{{ isset($value->sec3Images) ? '' : 'required' }}">
                                                          @if($value->sec3Images)
                                                          <img src="{{ asset($value->sec3Images) }}" alt="Current Image" style="height: 100px; width: 150px;">
                                                          @endif
-                                                         <input type="hidden" name="old_img[]" id="" value="{{ $value->sec3Images }}">
+                                                         <input type="hidden" name="old_img[]"  value="{{ $value->sec3Images }}">
                                                      </td>
                                                      <td>
                                                          <input type="text" name="sec3ImagesAlt[]" value="{{ $value->sec3ImagesAlt }}" class="form-control" placeholder="Enter Images Alt" data-bvalidator="">
@@ -220,7 +220,7 @@
                                                          <input type="text" name="sec3Titles[]" value="{{ $value->sec3Titles }}" class="form-control" placeholder="Enter Title" data-bvalidator="maxlen[99],required">
                                                      </td>
                                                      <td>
-                                                         <textarea name="sec3Descriptions[]" value="" class=" form-control" placeholder="Enter Description" data-bvalidator="maxlen[500],required" rows="1">{{ $value->sec3Descriptions }}</textarea>
+                                                         <textarea name="sec3Descriptions[]" value="" class=" form-control CkeditorClass" id="{{ $key }}" placeholder="Enter Description" data-bvalidator="maxlen[500],required" rows="1">{{ $value->sec3Descriptions }}</textarea>
                                                      </td>
                                                      <td>
                                                          <input type="text" name="sec3OrderBy[]" value="{{ $value->sec3OrderBy }}" class=" form-control" placeholder="Enter Order no" data-bvalidator="maxlen[9],number,required">
@@ -242,7 +242,7 @@
                                                          <input type="text" name="sec3Titles[]" class="form-control" placeholder="Enter Title" data-bvalidator="maxlen[99],required">
                                                      </td>
                                                      <td>
-                                                         <textarea name="sec3Descriptions[]" class="form-control" placeholder="Enter Description" data-bvalidator="maxlen[500],required" rows="1"></textarea>
+                                                         <textarea name="sec3Descriptions[]" class="form-control CkeditorClass" placeholder="Enter Description" data-bvalidator="maxlen[500],required" rows="1"></textarea>
                                                      </td>
                                                      <td>
                                                          <input type="text" name="sec3OrderBy[]" class="form-control" placeholder="Enter Order no" data-bvalidator="maxlen[9],number,required">
@@ -275,7 +275,7 @@
                                          <div class="form-group row">
                                              <label class="col-2 col-form-label">Description *</label>
                                              <div class="col-10">
-                                                 <textarea name="sec4Desc" data-bvalidator="required" class="form-control" id="" cols="30" rows="5" placeholder="Enter Description">{{$data->sec4Desc}}</textarea>
+                                                 <textarea name="sec4Desc" data-bvalidator="required" class="form-control CkeditorClass" id="editor2" cols="30" rows="5" placeholder="Enter Description">{{$data->sec4Desc}}</textarea>
 
                                              </div>
                                          </div>
@@ -374,14 +374,14 @@
                                              <tbody id="tablecloneSec5">
 
                                                  @if(isset($sec5AddMore))
-                                                 @foreach($sec5AddMore as $value)
+                                                 @foreach($sec5AddMore as $key => $value)
                                                  <tr>
                                                      <td>
                                                          <input type="file" name="sec5Images[]" value="{{ $value->sec5Images }}" class="form-control" data-bvalidator="{{ isset($value->sec5Images) ? '' : 'required' }}">
                                                          @if($value->sec5Images)
                                                          <img src="{{ asset($value->sec5Images) }}" alt="Current Image" style="height: 100px; width: 150px;">
                                                          @endif
-                                                         <input type="hidden" name="old_img_sec5[]" id="" value="{{ $value->sec5Images }}">
+                                                         <input type="hidden" name="old_img_sec5[]"  value="{{ $value->sec5Images }}">
                                                      </td>
                                                      <td>
                                                          <input type="text" name="sec5ImagesAlt[]" value="{{ $value->sec5ImagesAlt }}" class="form-control" placeholder="Images Alt" data-bvalidator="">
@@ -390,7 +390,7 @@
                                                          <input type="text" name="sec5Titles[]" value="{{ $value->sec5Titles }}" class="form-control" placeholder="Enter Title" data-bvalidator="maxlen[99],required">
                                                      </td>
                                                      <td>
-                                                         <textarea name="sec5Descriptions[]" value="" class=" form-control" placeholder="Enter Description" data-bvalidator="maxlen[500],required" rows="1">{{ $value->sec5Descriptions }}</textarea>
+                                                         <textarea name="sec5Descriptions[]" value="" class=" form-control CkeditorClass" id="edit{{ $key }}" placeholder="Enter Description" data-bvalidator="maxlen[500],required" rows="1">{{ $value->sec5Descriptions }}</textarea>
                                                      </td>
                                                      <td>
                                                          <input type="text" name="sec5OrderBy[]" value="{{ $value->sec5OrderBy }}" class=" form-control" placeholder="Enter Order no" data-bvalidator="maxlen[9],number,required">
@@ -412,7 +412,7 @@
                                                          <input type="text" name="sec5Titles[]" class="form-control" placeholder="Enter Title" data-bvalidator="maxlen[99],required">
                                                      </td>
                                                      <td>
-                                                         <textarea name="sec5Descriptions[]" class="form-control" placeholder="Enter Description" data-bvalidator="maxlen[500],required" rows="1"></textarea>
+                                                         <textarea name="sec5Descriptions[]" class="form-control CkeditorClass" id="editor4" placeholder="Enter Description" data-bvalidator="maxlen[500],required" rows="1"></textarea>
                                                      </td>
                                                      <td>
                                                          <input type="text" name="sec5OrderBy[]" class="form-control" placeholder="Enter Order no" data-bvalidator="maxlen[9],number,required">
@@ -546,7 +546,7 @@
                                          <div class="form-group row">
                                              <label class="col-2 col-form-label">Description *</label>
                                              <div class="col-10">
-                                                 <textarea name="sec8Desc" data-bvalidator="required" class="form-control" id="" cols="30" rows="5" placeholder="Enter Description">{{$data->sec8Desc}}</textarea>
+                                                 <textarea name="sec8Desc" data-bvalidator="required" class="form-control CkeditorClass" id="editor5" cols="30" rows="5" placeholder="Enter Description">{{$data->sec8Desc}}</textarea>
 
                                              </div>
                                          </div>
@@ -635,7 +635,7 @@
                                                          <input type="text" name="title[]" class="form-control" placeholder="Enter Title" data-bvalidator="maxlen[99],required">
                                                      </td>
                                                      <td>
-                                                         <textarea name="recordInDigit[]" class="form-control" placeholder="Enter Description" data-bvalidator="maxlen[500],required" rows="1"></textarea>
+                                                         <textarea name="recordInDigit[]" class="form-control CkeditorClass" id="editor7" placeholder="Enter Description" data-bvalidator="maxlen[500],required" rows="1"></textarea>
                                                      </td>
                                                      <td>
                                                          <input type="text" name="sec10OrderBy[]" class="form-control" placeholder="Enter Order no" data-bvalidator="maxlen[9],number,required">
@@ -683,7 +683,7 @@
                                          <div class="form-group row">
                                              <label class="col-2 col-form-label">Meta Description</label>
                                              <div class="col-10">
-                                                 <textarea name="meta_desc" data-bvalidator="maxlen[99]" class="form-control" id="" cols="30" rows="5">{{$data->meta_desc}}</textarea>
+                                                 <textarea name="meta_desc" data-bvalidator="maxlen[99]" class="form-control" id=""  cols="30" rows="5">{{$data->meta_desc}}</textarea>
                                              </div>
                                          </div>
                                      </div>

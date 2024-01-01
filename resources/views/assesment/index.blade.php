@@ -201,7 +201,7 @@
                                                 <div class="form-group row">
                                                     <label class="col-2 col-form-label">Description *</label>
                                                     <div class="col-10">
-                                                        <textarea name="sec3_desc" data-bvalidator="required" class="form-control" id="" cols="30" rows="5" placeholder="Enter Description">{{ $section_three->sec3_desc }}</textarea>
+                                                        <textarea name="sec3_desc" data-bvalidator="required" class="form-control CkeditorClass" id="editor5" cols="30" rows="5" placeholder="Enter Description">{{ $section_three->sec3_desc }}</textarea>
                                                     </div>
                                                 </div>
                                             </div>

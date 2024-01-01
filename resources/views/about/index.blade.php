@@ -106,7 +106,7 @@
                                     <div class="form-group row mb-5">
                                         <label class="col-2 col-form-label">Description *</label>
                                         <div class="col-10">
-                                            <textarea class="form-control CkeditorClass" id="editor" name="section_2_description" placeholder="Enter Description" required="">{{ $decode_logo->description }}</textarea>
+                                            <textarea class="form-control CkeditorClass" id="editorr" name="section_2_description" placeholder="Enter Description" required="">{{ $decode_logo->description }}</textarea>
                                         </div>
                                     </div>
 
