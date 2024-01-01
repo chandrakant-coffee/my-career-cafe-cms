@@ -14,6 +14,7 @@ use App\Models\Certification;
 use App\Models\HomeModel;
 use App\Models\AssesmentModel;
 use App\Models\JobsModel;
+use App\Models\JobSeekersModel;
 
 class ApiController extends Controller
 {
@@ -282,11 +283,13 @@ class ApiController extends Controller
             'status' => false
         ];
         $assesment_data = AssesmentModel::where('is_deleted', 0)->where('id', 1)->first();
+        $Job_seekers_data = JobSeekersModel::all()->where('is_deleted', 0);
+
         if (isset($assesment_data)) {
 
             $banner_section_data = json_decode($assesment_data->banner_section);
             $skill_assesment = json_decode($assesment_data->skill_assesment);
-            $section_three = json_decode($assesment_data->section_three);
+            $section_three = json_decode($assesment_data->section_three, true);
             $section_four = json_decode($assesment_data->section_four);
             $benefits_section = json_decode($assesment_data->benefits_section);
             $insights_and_tips_section = json_decode($assesment_data->insights_and_tips_section);
@@ -304,6 +307,17 @@ class ApiController extends Controller
                 'button' => $insights_and_tips_section->button,
                 'pointers' => $insights_and_tips_pointers_array
             );
+            $section_three['Job_seekers'] = array();
+            foreach ($Job_seekers_data as $key => $job_seeker) {
+                $section_three['Job_seekers'][] = [
+                    'Image' => $job_seeker->Image,
+                    'image_alt' => $job_seeker->image_alt,
+                    'name' => $job_seeker->name,
+                    'designation' => $job_seeker->designation,
+                    'short_desc' => $job_seeker->short_desc,
+                    'description' => $job_seeker->description,
+                ];
+            }
 
             $seo_arr = [
                 'page_title' => $assesment_data->page_title,
