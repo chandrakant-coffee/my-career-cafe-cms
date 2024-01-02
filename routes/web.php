@@ -7,8 +7,16 @@ use App\Http\Controllers\AssesmentController;
 use App\Http\Controllers\JobSeekersController;
 use App\Http\Controllers\JobsController;
 use App\Http\Controllers\{
-    DashboardController,UsersController,RolePermissionController,PermissionListingController,FooterController,HeaderController, AboutController,TipsController, CertificationController
-
+    DashboardController,
+    UsersController,
+    RolePermissionController,
+    PermissionListingController,
+    FooterController,
+    HeaderController,
+    AboutController,
+    BlogCategoryController,
+    TipsController,
+    CertificationController
 };
 
 /*
@@ -21,28 +29,28 @@ use App\Http\Controllers\{
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/clear', function() {
+
+Route::get('/clear', function () {
     Artisan::call('cache:clear');
     Artisan::call('config:clear');
     Artisan::call('config:cache');
     Artisan::call('view:clear');
     return view('clear');
- });
+});
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get('/', function () {
     dd('inn');
     return view('auth.login');
 });
 
-Route::get('/', [DashboardController::class,'Dashboard'])->middleware('auth')->name('dashboard');
+Route::get('/', [DashboardController::class, 'Dashboard'])->middleware('auth')->name('dashboard');
 
-Route::middleware(['auth','permission'])->group(function () {
-
+Route::middleware(['auth', 'permission'])->group(function () {
     Route::resource('users', UsersController::class);
-    Route::get('Ajax/VerifyUser', [UsersController::class,'VerifyUser'])->name('VerifyUser');
-    Route::get('ChangeStatus/{id}', [UsersController::class,'ChangeStatus'])->name('ChangeStatus');
+    Route::get('Ajax/VerifyUser', [UsersController::class, 'VerifyUser'])->name('VerifyUser');
+    Route::get('ChangeStatus/{id}', [UsersController::class, 'ChangeStatus'])->name('ChangeStatus');
     Route::resource('role-permission', RolePermissionController::class);
     Route::resource('permission-listing', PermissionListingController::class);
     Route::resource('footer', FooterController::class);
@@ -54,5 +62,6 @@ Route::middleware(['auth','permission'])->group(function () {
     Route::resource('assesment', AssesmentController::class);
     Route::resource('jobseekers', JobSeekersController::class);
     Route::resource('jobs', JobsController::class);
-
+    // BLOGS ROUTE 
+    Route::resource('blogcategory', BlogCategoryController::class);
 });

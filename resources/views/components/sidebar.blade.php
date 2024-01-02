@@ -179,6 +179,19 @@
                         <span class="menu-title">Insights and Tips</span>
                     </a>
                 </div>
+                <div class="menu-item">
+                    <div class="menu-content pt-8 pb-2">
+                        <span class="menu-section text-muted text-uppercase fs-8 ls-1"> Blog Modules</span>
+                    </div>
+                </div>
+                <div class="menu-item ">
+                    <a class="menu-link  @if ($route[0] == 'blogcategory') active @endif" href="{{ route('blogcategory.index') }}">
+                        <span class="menu-icon">
+                            <i class="bi bi-person fs-2"></i>
+                        </span>
+                        <span class="menu-title">Category</span>
+                    </a>
+                </div>
                 <!--end::Menu-->
             </div>
         </div>
