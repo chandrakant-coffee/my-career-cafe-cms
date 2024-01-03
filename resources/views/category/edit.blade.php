@@ -23,6 +23,7 @@
                                             <label class="col-2 col-form-label">Title *</label>
                                             <div class="col-10">
                                                 <input type="text" data-bvalidator="required" class="form-control" value="{{ $data->catTitle }}" name="catTitle" placeholder="Enter Category Title" />
+                                                <input type="hidden" value="{{ $data->catTitle }}" name="oldCatTitle" />
                                             </div>
                                         </div>
                                     </div>

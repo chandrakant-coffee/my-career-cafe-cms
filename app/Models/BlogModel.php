@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class BlogModel extends Model
 {
     use HasFactory;
+    protected $table = 'blog';
+    public $primaryKey = 'id';
+    public $timestamp = true;
 }

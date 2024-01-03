@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\BlogCategoryModel;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class BlogCategoryController extends Controller
 {
@@ -20,9 +21,21 @@ class BlogCategoryController extends Controller
 
     public function store(Request $request)
     {
+        $validationRules = [
+            'catTitle' => [
+                'required',
+                'max:250',
+                Rule::unique('blog_category', 'catTitle'),
+            ],
+        ];
+
+        $validator = validator($request->all(), $validationRules);
+        if ($validator->fails()) {
+            return redirect()->back()->with('success', 'Category must be unique; already added.');
+        }
         $data = new BlogCategoryModel();
         $data->catTitle = $request->catTitle;
-        $data->slug = Str::slug($data->catTitle);
+        $data->slug = Str::slug($request->catTitle);
         $data->save();
         return redirect()->route('blogcategory.index')->with('success', 'Category added successfully');
     }
@@ -35,9 +48,23 @@ class BlogCategoryController extends Controller
 
     public function update(Request $request, $id)
     {
+
+        $validationRules = [
+            'catTitle' => [
+                'required',
+                'max:250',
+                Rule::unique('blog_category', 'catTitle'),
+            ],
+        ];
+        if ($request->catTitle !== $request->oldCatTitle) {
+            $validator = validator($request->all(), $validationRules);
+            if ($validator->fails()) {
+                return redirect()->back()->with('success', 'Category must be unique; already added.');
+            }
+        }
         $data = BlogCategoryModel::findOrFail($id);
         $data->catTitle = $request->catTitle;
-        $data->slug = Str::slug($data->catTitle);
+        $data->slug = Str::slug($request->catTitle);
         $data->save();
         return redirect()->route('blogcategory.index')->with('success', 'Category updated successfully.');
     }

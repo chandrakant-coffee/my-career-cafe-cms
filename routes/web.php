@@ -16,7 +16,8 @@ use App\Http\Controllers\{
     AboutController,
     BlogCategoryController,
     TipsController,
-    CertificationController
+    CertificationController,
+    BlogController
 };
 
 /*
@@ -64,4 +65,5 @@ Route::middleware(['auth', 'permission'])->group(function () {
     Route::resource('jobs', JobsController::class);
     // BLOGS ROUTE 
     Route::resource('blogcategory', BlogCategoryController::class);
+    Route::resource('blog', BlogController::class);
 });

@@ -185,6 +185,14 @@
                     </div>
                 </div>
                 <div class="menu-item ">
+                    <a class="menu-link  @if ($route[0] == 'blog') active @endif" href="{{ route('blog.index') }}">
+                        <span class="menu-icon">
+                            <i class="bi bi-person fs-2"></i>
+                        </span>
+                        <span class="menu-title">Blog</span>
+                    </a>
+                </div>
+                <div class="menu-item ">
                     <a class="menu-link  @if ($route[0] == 'blogcategory') active @endif" href="{{ route('blogcategory.index') }}">
                         <span class="menu-icon">
                             <i class="bi bi-person fs-2"></i>
