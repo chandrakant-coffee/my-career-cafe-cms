@@ -15,6 +15,8 @@ use App\Models\HomeModel;
 use App\Models\AssesmentModel;
 use App\Models\JobsModel;
 use App\Models\JobSeekersModel;
+use App\Models\BlogCategoryModel;
+use App\Models\BlogModel;
 
 class ApiController extends Controller
 {
@@ -374,6 +376,57 @@ class ApiController extends Controller
                 'section_three' => $section_three,
                 'last_section' => $last_section,
                 'seo_data' => $seo_arr
+            );
+        }
+        return json_encode($responce);
+    }
+    public function getBlogCategory()
+    {
+        $responce = [
+            'message' => 'Record not found',
+            'error' => 404,
+            'status' => false
+        ];
+        $blogCategoryData = BlogCategoryModel::all()->where('is_deleted', 0);
+        if (isset($blogCategoryData)) {
+            foreach ($blogCategoryData as $key => $value) {
+                $categoryList[] = [
+                    'id' => $value->id,
+                    'catTitle' => $value->catTitle,
+                    'slug' => $value->slug,
+                ];
+            }
+            $responce = array(
+                'status' => true,
+                'categoryList' => $categoryList
+            );
+        }
+        return json_encode($responce);
+    }
+    public function getBlogList()
+    {
+        $responce = [
+            'message' => 'Record not found',
+            'error' => 404,
+            'status' => false
+        ];
+        $blogData = BlogModel::all()->where('is_deleted', 0);
+        $categoryList = BlogCategoryModel::pluck('catTitle', 'id')->toArray();
+        if (isset($blogData)) {
+            foreach ($blogData as $key => $value) {
+                $blogList[] = [
+                    'id' => $value->id,
+                    'featureImg' => $value->slug,
+                    'image_alt' => $value->image_alt,
+                    'blogTitle' => $value->name,
+                    'category' => $categoryList[$value->categoryID],
+                    'slug' => $value->slug,
+                    'description' => $value->description,
+                ];
+            }
+            $responce = array(
+                'status' => true,
+                'blogList' => $blogList
             );
         }
         return json_encode($responce);

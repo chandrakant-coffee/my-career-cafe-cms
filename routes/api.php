@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 date_default_timezone_set('Asia/Calcutta');
 
-Route::group(['middleware' => 'auth:sanctum'], function(){
-
+Route::group(['middleware' => 'auth:sanctum'], function () {
 });
 
 Route::get('header', [ApiController::class, 'header']);
@@ -27,3 +27,5 @@ Route::get('about', [ApiController::class, 'about']);
 Route::get('certification', [ApiController::class, 'certification']);
 Route::get('assesment', [ApiController::class, 'assesment']);
 Route::get('jobs', [ApiController::class, 'jobs']);
+Route::get('blog', [ApiController::class, 'getBlogList']);
+Route::get('blogcategory', [ApiController::class, 'getBlogCategory']);
