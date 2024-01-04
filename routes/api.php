@@ -28,4 +28,4 @@ Route::get('certification', [ApiController::class, 'certification']);
 Route::get('assesment', [ApiController::class, 'assesment']);
 Route::get('jobs', [ApiController::class, 'jobs']);
 Route::get('blog', [ApiController::class, 'getBlogList']);
-Route::get('blogcategory', [ApiController::class, 'getBlogCategory']);
+Route::get('blog-category', [ApiController::class, 'getBlogCategory']);

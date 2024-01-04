@@ -94,7 +94,7 @@ class ApiController extends Controller
             $sec10AddMore = json_decode($home_data->sec10AddMore);
             $insights_and_tips_data = json_decode($home_data->insights_and_tips_section);
 
-            // Section One 
+            // Section One
             $section_one_arr = [
                 'sec1Title' => $home_data->sec1Title,
                 'sec1SubTitle' => $home_data->sec1SubTitle,
@@ -292,7 +292,7 @@ class ApiController extends Controller
             $banner_section_data = json_decode($assesment_data->banner_section);
             $skill_assesment = json_decode($assesment_data->skill_assesment);
             $section_three = json_decode($assesment_data->section_three, true);
-            $section_four = json_decode($assesment_data->section_four);
+            $section_four = json_decode($assesment_data->section_four, true);
             $benefits_section = json_decode($assesment_data->benefits_section);
             $insights_and_tips_section = json_decode($assesment_data->insights_and_tips_section);
             $insights_and_tips_pointers_array = array();
@@ -309,9 +309,9 @@ class ApiController extends Controller
                 'button' => $insights_and_tips_section->button,
                 'pointers' => $insights_and_tips_pointers_array
             );
-            $section_three['Job_seekers'] = array();
+            $section_four['Job_seekers'] = array();
             foreach ($Job_seekers_data as $key => $job_seeker) {
-                $section_three['Job_seekers'][] = [
+                $section_four['Job_seekers'][] = [
                     'Image' => $job_seeker->Image,
                     'image_alt' => $job_seeker->image_alt,
                     'name' => $job_seeker->name,
