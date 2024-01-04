@@ -200,9 +200,24 @@
                         <span class="menu-title">Category</span>
                     </a>
                 </div>
+
+                <div class="menu-item">
+                    <div class="menu-content pt-8 pb-2">
+                        <span class="menu-section text-muted text-uppercase fs-8 ls-1"> Enroll Leads</span>
+                    </div>
+                </div>
+                <div class="menu-item ">
+                    <a class="menu-link  @if ($route[0] == 'enroll') active @endif" href="{{ route('enroll.index') }}">
+                        <span class="menu-icon">
+                            <i class="bi bi-person fs-2"></i>
+                        </span>
+                        <span class="menu-title">Leads</span>
+                    </a>
+                </div>
                 <!--end::Menu-->
             </div>
         </div>
         <!--end::Aside Menu-->
     </div>
 </div>
+

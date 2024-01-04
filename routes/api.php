@@ -20,6 +20,7 @@ date_default_timezone_set('Asia/Calcutta');
 Route::group(['middleware' => 'auth:sanctum'], function () {
 });
 
+// GET API
 Route::get('header', [ApiController::class, 'header']);
 Route::get('footer', [ApiController::class, 'footer']);
 Route::get('home', [ApiController::class, 'getHomeData']);
@@ -29,3 +30,6 @@ Route::get('assesment', [ApiController::class, 'assesment']);
 Route::get('jobs', [ApiController::class, 'jobs']);
 Route::get('blog', [ApiController::class, 'getBlogList']);
 Route::get('blog-category', [ApiController::class, 'getBlogCategory']);
+
+//POST API
+Route::post('store-enroll-data', [ApiController::class, 'storeEnrollData']);

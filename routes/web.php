@@ -17,7 +17,8 @@ use App\Http\Controllers\{
     BlogCategoryController,
     TipsController,
     CertificationController,
-    BlogController
+    BlogController,
+    EnrolldataController
 };
 
 /*
@@ -63,7 +64,8 @@ Route::middleware(['auth', 'permission'])->group(function () {
     Route::resource('assesment', AssesmentController::class);
     Route::resource('jobseekers', JobSeekersController::class);
     Route::resource('jobs', JobsController::class);
-    // BLOGS ROUTE 
+    // BLOGS ROUTE
     Route::resource('blogcategory', BlogCategoryController::class);
     Route::resource('blog', BlogController::class);
+    Route::resource('enroll', EnrolldataController::class);
 });

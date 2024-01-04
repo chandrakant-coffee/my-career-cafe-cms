@@ -17,6 +17,7 @@ use App\Models\JobsModel;
 use App\Models\JobSeekersModel;
 use App\Models\BlogCategoryModel;
 use App\Models\BlogModel;
+use App\Models\Enrolldata;
 
 class ApiController extends Controller
 {
@@ -431,4 +432,36 @@ class ApiController extends Controller
         }
         return json_encode($responce);
     }
+
+
+
+    public function storeEnrollData( Request $request )
+    {
+        $responce = [
+            'message' => 'Something went to wrong, Please try again.',
+            'error' => 400,
+            'status' => false
+        ];
+
+        $data = new Enrolldata();
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->mobile = $request->mobile;
+        $data->degree = $request->degree;
+        $data->year_of_completion = $request->year_of_completion;
+        $data->program = $request->program;
+
+        if( $data->save()){
+            $responce = [
+                'message' => 'Thank you fro you request, our team will connect you soon.',
+                'error' => 200,
+                'status' => true
+            ];
+
+        }
+        return json_encode($responce);
+
+    }
+
+
 }
