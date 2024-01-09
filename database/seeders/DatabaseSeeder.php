@@ -17,9 +17,12 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         \App\Models\User::factory()->create([
-            'name' => 'Coffee Digital',
+            'fname' => 'Coffee',
+            'lname' => 'Digital',
             'email' => 'chandrakant@coffeedigital.in',
             'password' => Hash::make(123456789),
+            'status' => 1,
+            'is_deleted' => 0,
         ]);
     }
 
