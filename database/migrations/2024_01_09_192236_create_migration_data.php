@@ -17,7 +17,6 @@ return new class extends Migration
 
         Schema::create('about', function (Blueprint $table) {
             $table->id();
-            $table->primary('id');
             $table->text('banner_section');
             $table->text('career_development_section');
             $table->text('charge_process_section');
@@ -38,7 +37,6 @@ return new class extends Migration
 
        Schema::create('assessment', function (Blueprint $table) {
             $table->id();
-            $table->primary('id');
             $table->longText('banner_section')->charset('utf8mb4')->collation('utf8mb4_bin')->nullable();
             $table->longText('skill_assessment')->charset('utf8mb4')->collation('utf8mb4_bin')->nullable();
             $table->longText('section_three')->charset('utf8mb4')->collation('utf8mb4_bin')->nullable();
@@ -59,7 +57,6 @@ return new class extends Migration
 
         Schema::create('blog', function (Blueprint $table) {
             $table->id();
-            $table->primary('id');
             $table->integer('categoryID')->default(0);
             $table->string('featureImg', 250)->nullable();
             $table->string('image_alt', 100)->nullable();
@@ -73,7 +70,6 @@ return new class extends Migration
 
         Schema::create('blog_category', function (Blueprint $table) {
             $table->id();
-            $table->primary('id');
             $table->string('catTitle', 250)->nullable();
             $table->string('slug', 300)->nullable();
             $table->tinyInteger('is_deleted')->default(0);
@@ -83,7 +79,6 @@ return new class extends Migration
 
         Schema::create('certification', function (Blueprint $table) {
             $table->id();
-            $table->primary('id');
             $table->text('banner_section');
             $table->text('content_section');
             $table->text('immersive_learning_section');
@@ -100,7 +95,6 @@ return new class extends Migration
 
         Schema::create('enrolldata', function (Blueprint $table) {
             $table->id();
-            $table->primary('id');
             $table->string('name', 255);
             $table->string('email', 255);
             $table->string('mobile', 255);
@@ -114,7 +108,6 @@ return new class extends Migration
 
         Schema::create('footer', function (Blueprint $table) {
             $table->id();
-            $table->primary('id');
             $table->text('logo');
             $table->text('description');
             $table->text('menus');
@@ -129,7 +122,6 @@ return new class extends Migration
 
         Schema::create('header', function (Blueprint $table) {
             $table->id();
-            $table->primary('id');
             $table->text('logo');
             $table->text('menus');
             $table->tinyInteger('is_deleted')->default(0);
@@ -138,7 +130,6 @@ return new class extends Migration
 
         Schema::create('home', function (Blueprint $table) {
             $table->id();
-            $table->primary('id');
             $table->string('sec1Title', 100)->nullable();
             $table->string('sec1SubTitle', 100)->nullable();
             $table->string('sec1Desc', 500)->nullable();
@@ -193,7 +184,6 @@ return new class extends Migration
 
         Schema::create('insights_and_tips', function (Blueprint $table) {
             $table->id();
-            $table->primary('id');
             $table->text('image');
             $table->text('category');
             $table->text('summary');
@@ -204,7 +194,6 @@ return new class extends Migration
 
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
-            $table->primary('id');
             $table->text('banner_section');
             $table->longText('section_two')->charset('utf8mb4')->collation('utf8mb4_bin')->nullable();
             $table->longText('section_three')->charset('utf8mb4')->collation('utf8mb4_bin')->nullable();
@@ -222,7 +211,6 @@ return new class extends Migration
 
         Schema::create('job_seekers', function (Blueprint $table) {
             $table->id();
-            $table->primary('id');
             $table->string('Image', 250)->nullable();
             $table->string('image_alt', 100)->nullable();
             $table->string('name', 100)->nullable();
@@ -266,8 +254,6 @@ return new class extends Migration
             $table->string('guard_name');
             $table->string('controller')->nullable();
             $table->timestamps();
-
-            $table->primary('id');
             $table->unique(['name', 'guard_name']);
         });
 
@@ -277,8 +263,6 @@ return new class extends Migration
             $table->string('guard_name');
             $table->string('active', 20)->default('1');
             $table->timestamps();
-
-            $table->primary('id');
             $table->unique(['name', 'guard_name']);
         });
 
@@ -300,7 +284,6 @@ return new class extends Migration
 
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->primary('id');
             $table->string('fname', 50);
             $table->string('lname', 50);
             $table->string('email')->unique();
