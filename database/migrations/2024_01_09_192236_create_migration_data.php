@@ -299,23 +299,6 @@ return new class extends Migration
         });
 
 
-        Schema::create('personal_access_tokens', function (Blueprint $table) {
-            $table->id();
-            $table->string('tokenable_type');
-            $table->unsignedBigInteger('tokenable_id');
-            $table->string('name');
-            $table->string('token')->unique();
-            $table->text('abilities')->nullable();
-            $table->timestamp('last_used_at')->nullable();
-            $table->timestamp('expires_at')->nullable();
-            $table->timestamps();
-        });
-
-        // Adding index
-        Schema::table('personal_access_tokens', function (Blueprint $table) {
-            $table->index(['tokenable_type', 'tokenable_id']);
-        });
-
 
 
     }
@@ -346,7 +329,7 @@ return new class extends Migration
         Schema::dropIfExists('model_has_roles');
         Schema::dropIfExists('role_has_permissions');
         Schema::dropIfExists('users');
-        Schema::dropIfExists('personal_access_tokens');
+
 
     }
 };
