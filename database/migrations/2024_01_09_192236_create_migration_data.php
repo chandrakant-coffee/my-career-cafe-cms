@@ -17,6 +17,7 @@ return new class extends Migration
 
         Schema::create('about', function (Blueprint $table) {
             $table->id();
+            $table->primary('id');
             $table->text('banner_section');
             $table->text('career_development_section');
             $table->text('charge_process_section');
@@ -33,14 +34,11 @@ return new class extends Migration
             $table->tinyInteger('is_deleted')->default(0);
             $table->timestamps();
         });
-        // Adding primary key
-        Schema::table('about', function (Blueprint $table) {
-            $table->primary('id');
-        });
 
 
        Schema::create('assessment', function (Blueprint $table) {
             $table->id();
+            $table->primary('id');
             $table->longText('banner_section')->charset('utf8mb4')->collation('utf8mb4_bin')->nullable();
             $table->longText('skill_assessment')->charset('utf8mb4')->collation('utf8mb4_bin')->nullable();
             $table->longText('section_three')->charset('utf8mb4')->collation('utf8mb4_bin')->nullable();
@@ -58,14 +56,10 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Adding primary key
-        Schema::table('assessment', function (Blueprint $table) {
-            $table->primary('id');
-        });
-
 
         Schema::create('blog', function (Blueprint $table) {
             $table->id();
+            $table->primary('id');
             $table->integer('categoryID')->default(0);
             $table->string('featureImg', 250)->nullable();
             $table->string('image_alt', 100)->nullable();
@@ -76,30 +70,20 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Adding primary key
-        Schema::table('blog', function (Blueprint $table) {
-            $table->primary('id');
-        });
-
-
 
         Schema::create('blog_category', function (Blueprint $table) {
             $table->id();
+            $table->primary('id');
             $table->string('catTitle', 250)->nullable();
             $table->string('slug', 300)->nullable();
             $table->tinyInteger('is_deleted')->default(0);
             $table->timestamps();
         });
 
-        // Adding primary key
-        Schema::table('blog_category', function (Blueprint $table) {
-            $table->primary('id');
-        });
-
-
 
         Schema::create('certification', function (Blueprint $table) {
             $table->id();
+            $table->primary('id');
             $table->text('banner_section');
             $table->text('content_section');
             $table->text('immersive_learning_section');
@@ -114,13 +98,9 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Adding primary key
-        Schema::table('certification', function (Blueprint $table) {
-            $table->primary('id');
-        });
-
         Schema::create('enrolldata', function (Blueprint $table) {
             $table->id();
+            $table->primary('id');
             $table->string('name', 255);
             $table->string('email', 255);
             $table->string('mobile', 255);
@@ -131,14 +111,10 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Adding primary key
-        Schema::table('enrolldata', function (Blueprint $table) {
-            $table->primary('id');
-        });
-
 
         Schema::create('footer', function (Blueprint $table) {
             $table->id();
+            $table->primary('id');
             $table->text('logo');
             $table->text('description');
             $table->text('menus');
@@ -150,28 +126,19 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Adding primary key
-        Schema::table('footer', function (Blueprint $table) {
-            $table->primary('id');
-        });
-
 
         Schema::create('header', function (Blueprint $table) {
             $table->id();
+            $table->primary('id');
             $table->text('logo');
             $table->text('menus');
             $table->tinyInteger('is_deleted')->default(0);
             $table->timestamps();
         });
 
-        // Adding primary key
-        Schema::table('header', function (Blueprint $table) {
-            $table->primary('id');
-        });
-
-
         Schema::create('home', function (Blueprint $table) {
             $table->id();
+            $table->primary('id');
             $table->string('sec1Title', 100)->nullable();
             $table->string('sec1SubTitle', 100)->nullable();
             $table->string('sec1Desc', 500)->nullable();
@@ -224,14 +191,9 @@ return new class extends Migration
             $table->string('canonical_rel', 250)->nullable();
         });
 
-        // Adding primary key
-        Schema::table('home', function (Blueprint $table) {
-            $table->primary('id');
-        });
-
-
         Schema::create('insights_and_tips', function (Blueprint $table) {
             $table->id();
+            $table->primary('id');
             $table->text('image');
             $table->text('category');
             $table->text('summary');
@@ -239,14 +201,10 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Adding primary key
-        Schema::table('insights_and_tips', function (Blueprint $table) {
-            $table->primary('id');
-        });
-
 
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
+            $table->primary('id');
             $table->text('banner_section');
             $table->longText('section_two')->charset('utf8mb4')->collation('utf8mb4_bin')->nullable();
             $table->longText('section_three')->charset('utf8mb4')->collation('utf8mb4_bin')->nullable();
@@ -262,13 +220,9 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Adding primary key
-        Schema::table('jobs', function (Blueprint $table) {
-            $table->primary('id');
-        });
-
         Schema::create('job_seekers', function (Blueprint $table) {
             $table->id();
+            $table->primary('id');
             $table->string('Image', 250)->nullable();
             $table->string('image_alt', 100)->nullable();
             $table->string('name', 100)->nullable();
@@ -279,10 +233,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Adding primary key
-        Schema::table('job_seekers', function (Blueprint $table) {
-            $table->primary('id');
-        });
 
         Schema::create('model_has_permissions', function (Blueprint $table) {
             $table->unsignedBigInteger('permission_id');
@@ -350,6 +300,7 @@ return new class extends Migration
 
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->primary('id');
             $table->string('fname', 50);
             $table->string('lname', 50);
             $table->string('email')->unique();
@@ -361,10 +312,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Adding primary key
-        Schema::table('users', function (Blueprint $table) {
-            $table->primary('id');
-        });
 
         Schema::create('personal_access_tokens', function (Blueprint $table) {
             $table->id();
@@ -376,11 +323,6 @@ return new class extends Migration
             $table->timestamp('last_used_at')->nullable();
             $table->timestamp('expires_at')->nullable();
             $table->timestamps();
-        });
-
-        // Adding primary key
-        Schema::table('personal_access_tokens', function (Blueprint $table) {
-            $table->primary('id');
         });
 
         // Adding index
