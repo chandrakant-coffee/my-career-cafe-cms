@@ -221,6 +221,14 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('permissions', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('guard_name');
+            $table->string('controller')->nullable();
+            $table->timestamps();
+            $table->unique(['name', 'guard_name']);
+        });
 
         Schema::create('model_has_permissions', function (Blueprint $table) {
             $table->unsignedBigInteger('permission_id');
@@ -248,14 +256,7 @@ return new class extends Migration
                 ->onDelete('cascade');
         });
 
-        Schema::create('permissions', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('guard_name');
-            $table->string('controller')->nullable();
-            $table->timestamps();
-            $table->unique(['name', 'guard_name']);
-        });
+
 
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
@@ -337,9 +338,9 @@ return new class extends Migration
         Schema::dropIfExists('insights_and_tips');
         Schema::dropIfExists('jobs');
         Schema::dropIfExists('job_seekers');
+        Schema::dropIfExists('permissions');
         Schema::dropIfExists('model_has_permissions');
         Schema::dropIfExists('model_has_roles');
-        Schema::dropIfExists('permissions');
         Schema::dropIfExists('roles');
         Schema::dropIfExists('role_has_permissions');
         Schema::dropIfExists('users');
