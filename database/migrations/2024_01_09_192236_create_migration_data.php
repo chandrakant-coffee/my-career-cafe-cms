@@ -37,12 +37,12 @@ return new class extends Migration
 
        Schema::create('assessment', function (Blueprint $table) {
             $table->id();
-            $table->longText('banner_section')->charset('utf8mb4')->collation('utf8mb4_bin')->nullable();
-            $table->longText('skill_assessment')->charset('utf8mb4')->collation('utf8mb4_bin')->nullable();
-            $table->longText('section_three')->charset('utf8mb4')->collation('utf8mb4_bin')->nullable();
-            $table->longText('section_four')->charset('utf8mb4')->collation('utf8mb4_bin')->nullable();
-            $table->longText('benefits_section')->charset('utf8mb4')->collation('utf8mb4_bin')->nullable();
-            $table->longText('insights_and_tips_section')->charset('utf8mb4')->collation('utf8mb4_bin')->nullable();
+            $table->text('banner_section')->nullable();
+            $table->text('skill_assessment')->nullable();
+            $table->text('section_three')->nullable();
+            $table->text('section_four')->nullable();
+            $table->text('benefits_section')->nullable();
+            $table->text('insights_and_tips_section')->nullable();
             $table->string('page_title', 250)->nullable();
             $table->string('meta_title', 250)->nullable();
             $table->string('meta_desc', 250)->nullable();
@@ -146,7 +146,7 @@ return new class extends Migration
             $table->string('sec3Title', 100)->nullable();
             $table->string('sec3Link', 250)->nullable();
             $table->string('sec3LinkTxt', 100)->nullable();
-            $table->longText('sec3AddMore')->nullable();
+            $table->text('sec3AddMore')->nullable();
             $table->string('sec4Title', 250)->nullable();
             $table->string('sec4Desc', 500)->nullable();
             $table->string('sec4Link', 150)->nullable();
@@ -156,7 +156,7 @@ return new class extends Migration
             $table->string('sec5Image', 250)->nullable();
             $table->string('sec5ImageAlt', 100)->nullable();
             $table->string('sec5Title', 100)->nullable();
-            $table->longText('sec5AddMore')->nullable();
+            $table->text('sec5AddMore')->nullable();
             $table->string('sec6Title', 100)->nullable();
             $table->string('sec6image', 250)->nullable();
             $table->string('sec6imageAlt', 100)->nullable();
@@ -169,8 +169,8 @@ return new class extends Migration
             $table->string('sec8Image', 250)->nullable();
             $table->string('sec8ImgAlt', 100)->nullable();
             $table->string('sec9Title', 100)->nullable();
-            $table->longText('sec10AddMore')->nullable();
-            $table->longText('insights_and_tips_section')->nullable();
+            $table->text('sec10AddMore')->nullable();
+            $table->text('insights_and_tips_section')->nullable();
             $table->timestamps();
             $table->tinyInteger('is_deleted')->default(0);
             $table->string('page_title', 100)->nullable();
@@ -195,9 +195,9 @@ return new class extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->text('banner_section');
-            $table->longText('section_two')->charset('utf8mb4')->collation('utf8mb4_bin')->nullable();
-            $table->longText('section_three')->charset('utf8mb4')->collation('utf8mb4_bin')->nullable();
-            $table->longText('last_section')->nullable();
+            $table->text('section_two')->nullable();
+            $table->text('section_three')->nullable();
+            $table->text('last_section')->nullable();
             $table->string('page_title', 250)->nullable();
             $table->string('meta_title', 250)->nullable();
             $table->string('meta_desc', 250)->nullable();
